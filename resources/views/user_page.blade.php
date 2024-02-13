@@ -1,0 +1,10 @@
+@extends('include.index')
+@section('userInfo')
+    @include('admin.user_page.user_info')
+@endsection(userInfo)
+
+@section("model")
+@include('admin.model.show_user')
+@include('admin.model.edit_user')
+@include('admin.model.create_user')
+@endsection("model")
