@@ -35,7 +35,7 @@ $(document).ready(function () {
                         </div>
                         <div class="modal-body">
                             <div class="container">
-                                <form id="form_edit_subject" action="${url_updata}/${data.id}" method="post">
+                                <form id="form_edit_subject${data.id}" action="${url_updata}/${data.id}" method="post">
                                     <input type="hidden" name="_token" value="NJfSe9yWbQh8Eaouah6DM21SRZYSGkBE1W2Fr4X3" autocomplete="off">
                                     <input type="hidden" name="_method" value="put">
                                     <div class="form">
@@ -49,7 +49,7 @@ $(document).ready(function () {
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-success" id="btn_update">Update</button>
+                            <button type="submit" class="btn btn-success btn_update" data-id="${data.id}" id="btn_update">Update</button>
                         </div>
                         </form>
                     </di

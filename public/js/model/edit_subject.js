@@ -1,6 +1,8 @@
 $(document).ready(function () {
-    var form = $("#form_edit_subject");
-    $("#btn_update").click(function () {
+    $(".btn_update").click(function () {
+        // e.preventDefault();
+        var id = $(this).data("id");
+        var form = $("#form_edit_subject"+id);
         var formData = form.serialize();
         $.ajax({
             type: form.attr("method"),
@@ -9,8 +11,8 @@ $(document).ready(function () {
             success: function (data) {
                 console.log(data);
                 console.log("done");
-                $("#subject"+data.id).text(data.subject);
-                $("#full_mark"+data.id).text(data.full_mark);
+                $("#subject" + data.id).text(data.subject);
+                $("#full_mark" + data.id).text(data.full_mark);
                 // $("#EditModelsubject"+data.id);
                 $("#EditModelsubject" + data.id).modal("hide");
             },

@@ -17,7 +17,7 @@
                         </div>
                         <div class="md-5">
                             <label for="mark" class="form-label text-light">Mark</label>
-                            <input type="number" name="mark" id="mark" class="form-control"
+                            <input type="text" name="mark" id="mark" class="form-control" max="100" maxlength="3"
                                 placeholder="Enter Mark:">
                         </div>
                 </div>

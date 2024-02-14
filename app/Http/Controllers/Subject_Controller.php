@@ -60,17 +60,26 @@ class Subject_Controller extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request,  $id)
     {
         //
-        $subject = Subject::find($id);
 
-        $subject->fill([
-            'subject' => $request->input('editsubject'),
-            'full_mark' => $request->input('editmark'),
-        ])->save();
+        if ($request->ajax()) {
+            $subject = Subject::find($id);
+            $subject->fill([
+                'subject' => $request->input('editsubject'),
+                'full_mark' => $request->input('editmark'),
+            ])->update();
 
+            # code...
         return $subject;
+
+        }
+        // $subject->fill([
+        //     'subject' => $request->input('editsubject'),
+        //     'full_mark' => $request->input('editmark'),
+        // ])->update();
+
     }
 
     /**

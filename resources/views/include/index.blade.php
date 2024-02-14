@@ -38,7 +38,6 @@
 
 
 
-
     <script src="https://unpkg.com/htmx.org@1.9.10"
         integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous">
     </script>
@@ -49,11 +48,10 @@
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
     crossorigin="anonymous"></script>
 <script src="{{ asset('js/index.js') }}"></script>
-<script src="{{ asset('js/model/create_subject.js') }}"></script>
-<script src="{{ asset('js/model/delet_subject.js') }}"></script>
-<script src="{{ asset('js/model/edit_subject.js') }}"></script>
+
 
 @yield('js')
+@yield('model_js')
 
 </body>
 

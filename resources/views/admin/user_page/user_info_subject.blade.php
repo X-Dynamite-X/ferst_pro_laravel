@@ -8,7 +8,7 @@
 </div>
 <div class="container text-center">
     <div class="row">
-        <table class="table table-hover"  class="tbody">
+        <table class="table table-hover" class="tbody">
             <thead>
                 <tr>
                     <td scope="col">ID</td>
@@ -20,32 +20,34 @@
                     <td scope="col">Delete</td>
                 </tr>
             </thead>
-            <tbody id="res" >
+            <tbody id="res">
                 @foreach ($subjects as $subject)
                     <tr id="tr{{ $subject->id }}">
                         <td scope="row">{{ $subject->id }}</td>
-                        <td scope="row" id="subject{{$subject->id}}">{{ $subject->subject }}</td>
-                        <td scope="row" id="full_mark{{$subject->id}}">{{ $subject->full_mark }}</td>
+                        <td scope="row" id="subject{{ $subject->id }}">{{ $subject->subject }}</td>
+                        <td scope="row" id="full_mark{{ $subject->id }}">{{ $subject->full_mark }}</td>
                         <td scope="row">
                             <button type="button" class="btn btn-success" data-bs-toggle="modal"
                                 data-bs-target="#AddModelsubjectUser{{ $subject->id }}"
-                                id="addSubjectUser{{ $subject->id }}"  >Add Student</button>
+                                id="addSubjectUser{{ $subject->id }}">Add Student</button>
                         </td>
                         <td scope="row">
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                 data-bs-target="#ModelShowsubject{{ $subject->id }}"
-                                id="showSubjectUser{{ $subject->id }}"  >Show</button>
+                                id="showSubjectUser{{ $subject->id }}">Show</button>
                         </td>
                         <td scope="row">
                             <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                                 data-bs-target="#EditModelsubject{{ $subject->id }}"
-                                id="editSubjectUser{{ $subject->id }}"  >Edit</button>
+                                id="editSubjectUser{{ $subject->id }}">Edit</button>
                         </td>
                         <td scope="row">
-                            <form id="form_delete_subject"  action="{{ route('delete_subject', ['id' => $subject->id]) }}" method="post">
+                            <form id="form_delete_subject{{ $subject->id }}" calss="form_delete_subject"
+                                action="{{ route('delete_subject', ['id' => $subject->id]) }}" method="post">
                                 @csrf
-                                @method("delete")
-                                <button data-id="{{ $subject->id }}" type="button" id="btn_delete_subject" class="btn btn-danger" >Delete</button>
+                                @method('delete')
+                                <button data-id="{{ $subject->id }}" type="button" id="btn_delete_subject"
+                                    class="btn btn-danger btn_delete_subject">Delete</button>
                             </form>
                         </td>
                     </tr>
@@ -62,9 +64,8 @@
     </div>
 </div>
 @section('js')
-<script>
-var url_delete ="{{ route('delete_subject',"") }}"
-var url_updata ="{{ route('update_subject',"") }}"
-
-</script>
+    <script>
+        var url_delete = "{{ route('delete_subject', '') }}"
+        var url_updata = "{{ route('update_subject', '') }}"
+    </script>
 @endsection

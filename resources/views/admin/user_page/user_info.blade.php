@@ -29,13 +29,16 @@
                         <td scope="row">{{ $user->email }}</td>
                         <td scope="row">True</td>
                         <td scope="row"><button type="button" class="btn btn-primary"
-                                id="show_user{{ $user->id }}" data-bs-toggle="modal" data-bs-target="#ModelShow{{$user->id}}">
+                                id="show_user{{ $user->id }}" data-bs-toggle="modal"
+                                data-bs-target="#ModelShow{{ $user->id }}">
                                 Show
                             </button></td>
                         <td scope="row"><button type="button" class="btn btn-warning"
-                                id="edit_user{{ $user->id }}" data-bs-toggle="modal" data-bs-target="#EditModel{{$user->id}}">
+                                id="edit_user{{ $user->id }}" data-bs-toggle="modal"
+                                data-bs-target="#EditModel{{ $user->id }}">
                                 Edit
-                            </button> </td>
+                            </button>
+                        </td>
                         <td scope="row"><button class="btn btn-danger"
                                 id="delete_user{{ $user->id }}">Delete</button> </td>
                     </tr>

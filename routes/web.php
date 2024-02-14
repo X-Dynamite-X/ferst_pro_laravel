@@ -17,34 +17,21 @@ use App\Http\Controllers\Subject_Controller;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-
-
-
-
 Route::prefix('studant')->group(function () {
     Route::get('/home', function () {
         return view('home');
     });
 });
 
-
-
-
 Route::prefix('admin')->group(function () {
     Route::get('/user_subject', [Subject_Controller::class, 'index'])->name('index_subject');
     Route::post('/user_subject/sort',[Subject_Controller::class, 'store'])->name('store_subject');
     Route::delete('/user_subject/delete/{id}', [Subject_Controller::class,'destroy'])->name('delete_subject');
     Route::put('/user_subject/edit/{id}',[Subject_Controller::class, 'update'])->name('update_subject');
-
-Route::get('/user', [HomeController::class, 'showUser'])->name('user_home');
-
+    Route::get('/user', [HomeController::class, 'showUser'])->name('user_home');
     Route::post('/subjects/{subject}/addUser', [Subject_Controller::class, 'addUserToSubject'])->name('subjects_addUser');
 });
 
-
-
 Auth::routes(['verify'=>true]);
-
 // Route::get('/home', [HomeController::class, 'index'])->middleware('verified') ->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
