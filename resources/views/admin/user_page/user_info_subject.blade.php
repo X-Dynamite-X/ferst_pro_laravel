@@ -46,7 +46,7 @@
                                 action="{{ route('delete_subject', ['id' => $subject->id]) }}" method="post">
                                 @csrf
                                 @method('delete')
-                                <button data-id="{{ $subject->id }}" type="button" id="btn_delete_subject"
+                                <button data-id="{{ $subject->id }}" data-subject="{{$subject->subject}}" type="button" id="btn_delete_subject"
                                     class="btn btn-danger btn_delete_subject">Delete</button>
                             </form>
                         </td>

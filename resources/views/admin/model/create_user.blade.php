@@ -1,5 +1,5 @@
-<div class="modal fade " data-bs-theme="dark" id="CreateModel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="CreateModelLabel" aria-hidden="true">
+<div class="modal fade " data-bs-theme="dark" id="CreateModel" data-bs-backdrop="static" data-bs-keyboard="false"
+    tabindex="-1" aria-labelledby="CreateModelLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -8,30 +8,56 @@
             </div>
             <div class="modal-body">
                 <div class="container">
-                    <form action="#" method="post">
+                    <form method="POST" id="form_creat_user" action="{{ route('create_user') }}">
                         @csrf
                         <div class="md-5">
                             <label for="username" class="form-label text-light">Username</label>
-                            <input type="text" name="username" id="username" class="form-control"
-                                placeholder="Enter Username:" >
+                            <input id="username" placeholder="username "
+                                type="text"class="form-control @error('name') is-invalid @enderror" name="name"
+                                value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="md-5">
-                            <label for="email" class="form-label text-light">Email</label>
-                            <input type="email" name="email" id="email" class="form-control"
-                                placeholder="Enter Email:" >
+                            <label for="email" class="form-label ">Email</label>
+                            <input placeholder="E-mail" id="email" type="email"
+                                class="form-control @error('email') is-invalid @enderror" name="email"
+                                value="{{ old('email') }}" required autocomplete="email">
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="md-5">
-                            <input type="checkbox" name="actev" id="actev" class="form-check-input">
-                            <label for="actev" class="form-check-label  text-light">actev</label>
+                            <label for="password" class="form-label ">Password </label>
+                            <input id="password" type="password"
+                                class="form-control @error('password') is-invalid @enderror" name="password" required
+                                placeholder="password" autocomplete="new-password">
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
-                    </form>
+                        <div class="md-5">
+                            <label for="password-confirm" class="form-label ">Password Confirm</label>
+                            <input id="password-confirm" type="password" placeholder="Password Confirm"
+                                class="form-control"name="password_confirmation" required autocomplete="new-password">
+
+                        </div>
+
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button class="btn btn-success">Save</button>
+                <button type="button" id="creat_user" class="btn btn-success">{{ __('Register') }}</button>
 
             </div>
+            </form>
         </div>
     </div>
 </div>

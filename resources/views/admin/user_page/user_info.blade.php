@@ -4,7 +4,6 @@
         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#CreateModel">
             Craate
         </button>
-
     </div>
 </div>
 <div class="container text-center ">
@@ -15,32 +14,47 @@
                     <th scope="col">ID</th>
                     <th scope="col">Username</th>
                     <th scope="col">Emaile</th>
-                    <th scope="col">acteve</th>
+                    <th scope="col">Acteve</th>
                     <th scope="col">Show</th>
                     <th scope="col">Edits</th>
                     <th scope="col">Delete</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="row_user">
                 @foreach ($users as $user)
                     <tr id="tr{{ $user->id }}">
                         <td scope="row">{{ $user->id }}</td>
-                        <td scope="row">{{ $user->name }}</td>
-                        <td scope="row">{{ $user->email }}</td>
-                        <td scope="row">True</td>
-                        <td scope="row"><button type="button" class="btn btn-primary"
-                                id="show_user{{ $user->id }}" data-bs-toggle="modal"
-                                data-bs-target="#ModelShow{{ $user->id }}">
+                        <td scope="row" id="name{{ $user->id }}">{{ $user->name }}</td>
+                        <td scope="row" id="email{{ $user->id }}">{{ $user->email }}</td>
+                        <td scope="row "id="actev{{ $user->id }}"
+                            class="is_actev {{ $user->is_actev ? 'text-success i' : 'text-danger' }}">
+                            {{ $user->is_actev ? 'Is Actev' : 'Not Actev' }}
+                        </td>
+                        <td scope="row">
+                            <button type="button" class="btn btn-primary" id="show_user{{ $user->id }}"
+                                data-bs-toggle="modal" data-bs-target="#ModelShow{{ $user->id }}">
                                 Show
-                            </button></td>
-                        <td scope="row"><button type="button" class="btn btn-warning"
-                                id="edit_user{{ $user->id }}" data-bs-toggle="modal"
-                                data-bs-target="#EditModel{{ $user->id }}">
+                            </button>
+                        </td>
+                        <td scope="row">
+                            <button type="button" class="btn btn-warning" id="edit_user{{ $user->id }}"
+                                data-bs-toggle="modal" data-bs-target="#EditModel{{ $user->id }}">
                                 Edit
                             </button>
                         </td>
-                        <td scope="row"><button class="btn btn-danger"
-                                id="delete_user{{ $user->id }}">Delete</button> </td>
+                        {{-- fnale --}}
+                        <td scope="row">
+                            <form id="form_delete_user{{ $user->id }}"
+                                action="{{ route('delete_user', ['id' => $user->id]) }}" method="post">
+                                @csrf
+                                @method('delete')
+
+                                <button type="button" data-name="{{ $user->name }}" data-id="{{ $user->id }}"
+                                    class="btn btn-danger btn_delete_user"
+                                    id="delete_user{{ $user->id }}">Delete</button>
+                            </form>
+                        </td>
+
                     </tr>
                 @endforeach
             </tbody>
@@ -52,6 +66,11 @@
         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#CreateModel">
             Craate
         </button>
-
     </div>
 </div>
+@section('js')
+    <script>
+        var url_edit_user = "{{ route('edit_user', '') }}"
+        var url_delete_user = "{{ route('delete_user', '') }}"
+    </script>
+@endsection

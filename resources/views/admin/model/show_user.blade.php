@@ -1,5 +1,4 @@
 <div id="show_user">
-
     @foreach ($users as $user)
         <div class="modal fade " id="ModelShow{{ $user->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
             tabindex="-1" aria-labelledby="ModelShowLabel" aria-hidden="true">
@@ -24,7 +23,11 @@
                         </div>
                         <div class="row">
                             <p class="col-2 ">acteve:</p>
-                            <h5 class='col-2'>True</h5>
+                            @if ($user->is_actev == 1)
+                                <h5 scope="row" class="col-3  text-success "> Is Actev </h5>
+                            @else
+                                <h5 scope="row" class="col-3  text-danger"> Not Actev </h5>
+                            @endif
                         </div>
                     </div>
                     <div class="modal-footer">

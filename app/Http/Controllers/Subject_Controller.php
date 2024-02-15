@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Subject;
 use App\Models\User;
+
 class Subject_Controller extends Controller
 {
     /**
@@ -16,7 +17,7 @@ class Subject_Controller extends Controller
         $subjects = Subject::all();
         $users = User::all();
 
-        return view('user_subject', compact('subjects','users'));
+        return view('user_subject', compact('subjects', 'users'));
     }
 
     /**
@@ -62,24 +63,13 @@ class Subject_Controller extends Controller
      */
     public function update(Request $request,  $id)
     {
-        //
 
-        if ($request->ajax()) {
-            $subject = Subject::find($id);
-            $subject->fill([
-                'subject' => $request->input('editsubject'),
-                'full_mark' => $request->input('editmark'),
-            ])->update();
-
-            # code...
+        $subject = Subject::find($id);
+        $subject->fill([
+            'subject' => $request->input('editsubject'),
+            'full_mark' => $request->input('editmark'),
+        ])->update();
         return $subject;
-
-        }
-        // $subject->fill([
-        //     'subject' => $request->input('editsubject'),
-        //     'full_mark' => $request->input('editmark'),
-        // ])->update();
-
     }
 
     /**

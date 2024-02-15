@@ -2,7 +2,7 @@ $(document).ready(function () {
     $(".btn_update").click(function () {
         // e.preventDefault();
         var id = $(this).data("id");
-        var form = $("#form_edit_subject"+id);
+        var form = $("#form_edit_subject" + id);
         var formData = form.serialize();
         $.ajax({
             type: form.attr("method"),

@@ -1,9 +1,9 @@
 $(document).ready(function () {
-    $(".btn_delete_subject").click(function () {
+    $(".btn_delete_user").click(function () {
         var id = $(this).data("id");
-        var form = $("#form_delete_subject" + id);
-        var subject =$(this).data('subject')
-        if (confirm("Are you sure to delete this subject "+subject+" ?")) {
+        var form = $("#form_delete_user" + id);
+        var name  =$(this).data('name')
+        if (confirm("Are you sure to delete this user "+name +" ?")) {
             $.ajax({
                 type: "Delete",
                 url: form.attr("action"),
