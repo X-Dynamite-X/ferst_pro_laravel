@@ -11,23 +11,25 @@
                     </div>
                     <div class="modal-body">
                         <div class="container">
-                            <form action="#" method="post">
+                            <form action="{{ route('add_user_for_subject', ['subject_id' => $subject->id]) }}"
+                                method="post">
                                 @csrf
+                                <input type="hidden" name="subject_id"  value="{{ $subject->id }}">
                                 <div class="md-5">
-                                    <label for="username" class="form-label ">username</label>
-                                    <select multiple class="form-control" id="multiSelect" name="multiOptions[]">
-                                        @foreach ($users as $user)
-                                            <option value="option1">{{ $user->name }}</option>
-                                        @endforeach
-                                    </select>
+                                    <select id="user_ids" name="user_ids[]" multiple required>
+                                            @foreach ($users as $user)
+                                                <option name="name" value="{{$user->id}}">{{$user->name}}</option>
+                                            @endforeach
+                                        </select>
                                 </div>
-                            </form>
+
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button class="btn btn-success">Save</button>
+                        <button type="submit" class="btn btn-success">Save</button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Subject_Controller;
+use App\Http\Controllers\SubjectUser_Controller;
 
 
 
@@ -33,10 +34,10 @@ Route::prefix('admin')->group(function () {
     Route::post('/user/create_user', [HomeController::class, 'create_user'])->name('create_user');
     Route::delete('/user/delete/{id}', [HomeController::class, 'destroy'])->name('delete_user');
     Route::put('/user/edit/{id}/', [HomeController::class, 'editUser'])->name('edit_user');
-    Route::post('/subjects/{subject}/addUser', [Subject_Controller::class, 'addUserToSubject'])->name('subjects_addUser');
+    Route::post('/user_subject/{subject_id}/add_user_for_subject', [SubjectUser_Controller::class, 'store'])->name('add_user_for_subject');
 });
 
 Auth::routes(['verify' => true]);
 // Route::get('/home', [HomeController::class, 'index'])->middleware('verified') ->name('home');
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 

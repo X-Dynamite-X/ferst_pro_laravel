@@ -44,8 +44,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    public function firstModel()
+    public function subjects()
     {
-        return $this->belongsTo(subject::class);
+        return $this->belongsToMany(Subject::class, 'subject_user');
     }
+
 }

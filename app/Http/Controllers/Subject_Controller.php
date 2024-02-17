@@ -16,7 +16,6 @@ class Subject_Controller extends Controller
         //
         $subjects = Subject::all();
         $users = User::all();
-
         return view('user_subject', compact('subjects', 'users'));
     }
 

@@ -15,8 +15,9 @@ class subject extends Model
         'full_mark',
     ];
 
-    public function secondModels()
+    public function users()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsToMany(User::class, 'subject_user');
     }
+
 }
