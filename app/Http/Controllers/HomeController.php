@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -31,8 +32,9 @@ class HomeController extends Controller
     public function showUser()
     {
         $users = User::all();
+        $user_auth = Auth::user();
 
-        return view('user_page', compact('users'));
+        return view('user_page', compact('users','user_auth'));
     }
     public function create_user(Request $request)
     {

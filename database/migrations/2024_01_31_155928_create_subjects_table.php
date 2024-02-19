@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
             $table->string('subject');
+            $table->integer('mini_mark');
             $table->integer('full_mark');
+
             $table->timestamps();
         });
     }

@@ -13,6 +13,9 @@ $(document).ready(function () {
                 console.log("done");
                 $("#subject" + data.id).text(data.subject);
                 $("#full_mark" + data.id).text(data.full_mark);
+                $(".subject_users_id" + data.id).text(data.subject);
+
+
                 // $("#EditModelsubject"+data.id);
                 $("#EditModelsubject" + data.id).modal("hide");
             },

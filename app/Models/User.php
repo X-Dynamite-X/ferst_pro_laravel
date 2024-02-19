@@ -46,7 +46,7 @@ class User extends Authenticatable
     ];
     public function subjects()
     {
-        return $this->belongsToMany(Subject::class, 'subject_user');
+        return $this->belongsToMany(Subject::class, 'subject_user')->withPivot('user_mark');
     }
 
 }

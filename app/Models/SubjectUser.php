@@ -9,6 +9,18 @@ class SubjectUser extends Model
 {
     use HasFactory;
 
-    // protected $table = 'subject_user';
+    protected $table = 'subject_user'; // اسم الجدول المرتبط بالنموذج
 
+    protected $fillable = ['user_mark']; // حقول يمكن تعبئتها
+
+    // إضافة العلاقة بين المستخدمين والمواضيع
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class);
+    }
 }

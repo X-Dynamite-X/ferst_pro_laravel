@@ -18,9 +18,11 @@ $(document).ready(function () {
                 $("#is_actev" + data.id).prop('checked', data.is_actev);
                 var tdElement = $("#actev" + data.id);
                 tdElement.removeClass('text-success text-danger');
-                tdElement.addClass(data.is_actev ? 'text-success i' : 'text-danger');
+                tdElement.addClass(data.is_actev ? 'text-success ' : 'text-danger');
                 tdElement.text(data.is_actev ? 'Is Actev' : 'Not Actev');
                 $("#EditModel" + data.id).modal("hide");
+                $(".subjects_user_id" + data.id).text(data.subject);
+
             },
             error: function (data) {
                 console.log("Errou for send data");

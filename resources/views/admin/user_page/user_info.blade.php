@@ -22,6 +22,8 @@
             </thead>
             <tbody id="row_user">
                 @foreach ($users as $user)
+                @if($user->id !== $user_auth->id)
+
                     <tr id="tr{{ $user->id }}">
                         <td scope="row">{{ $user->id }}</td>
                         <td scope="row" id="name{{ $user->id }}">{{ $user->name }}</td>
@@ -42,20 +44,18 @@
                                 Edit
                             </button>
                         </td>
-                        {{-- fnale --}}
                         <td scope="row">
                             <form id="form_delete_user{{ $user->id }}"
                                 action="{{ route('delete_user', ['id' => $user->id]) }}" method="post">
                                 @csrf
                                 @method('delete')
-
                                 <button type="button" data-name="{{ $user->name }}" data-id="{{ $user->id }}"
                                     class="btn btn-danger btn_delete_user"
                                     id="delete_user{{ $user->id }}">Delete</button>
                             </form>
                         </td>
-
                     </tr>
+                    @endif
                 @endforeach
             </tbody>
         </table>
@@ -70,6 +70,7 @@
 </div>
 @section('js')
     <script>
+        var csrf_token = "{{ csrf_token() }}";
         var url_edit_user = "{{ route('edit_user', '') }}"
         var url_delete_user = "{{ route('delete_user', '') }}"
     </script>

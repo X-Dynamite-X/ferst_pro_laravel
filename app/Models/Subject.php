@@ -12,12 +12,14 @@ class subject extends Model
 
     protected $fillable = [
         'subject',
+
+        "mini_mark",
         'full_mark',
     ];
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'subject_user');
+        return $this->belongsToMany(User::class, 'subject_user')->withPivot('user_mark');
     }
 
 }

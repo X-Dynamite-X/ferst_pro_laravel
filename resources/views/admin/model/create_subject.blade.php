@@ -15,10 +15,15 @@
                             <input type="text" name="subject_input" id="subject_input" class="form-control"
                                 placeholder="Enter subject:" r>
                         </div>
+                        {{-- <div class="md-5">
+                            <label for="mini_mark" class="form-label text-light">Mini Mark</label>
+                            <input type="text" name="mini_mark" id="mini_mark" class="form-control"   maxlength="3"
+                                placeholder="Enter Mini Mark:">
+                        </div> --}}
                         <div class="md-5">
-                            <label for="mark" class="form-label text-light">Mark</label>
-                            <input type="text" name="mark" id="mark" class="form-control" max="100" maxlength="3"
-                                placeholder="Enter Mark:">
+                            <label for="full_mark" class="form-label text-light">Full Mark</label>
+                            <input type="text" name="full_mark" id="full_mark" class="form-control"   maxlength="3"
+                                placeholder="Enter Full Mark:">
                         </div>
                 </div>
             </div>

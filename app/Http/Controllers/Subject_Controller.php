@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Subject;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class Subject_Controller extends Controller
 {
@@ -16,7 +17,8 @@ class Subject_Controller extends Controller
         //
         $subjects = Subject::all();
         $users = User::all();
-        return view('user_subject', compact('subjects', 'users'));
+        $user_auth = Auth::user();
+        return view('user_subject', compact('subjects', 'users',"user_auth"));
     }
 
     /**
@@ -34,7 +36,8 @@ class Subject_Controller extends Controller
         // dd($request->all());
         $subject = Subject::create([
             'subject' => $request->input('subject_input'),
-            'full_mark' => $request->input('mark'),
+            'mini_mark' => "0",
+            'full_mark' => $request->input('full_mark'),
         ]);
         return ($subject);
     }
@@ -66,7 +69,9 @@ class Subject_Controller extends Controller
         $subject = Subject::find($id);
         $subject->fill([
             'subject' => $request->input('editsubject'),
-            'full_mark' => $request->input('editmark'),
+            'mini_mark' => $request->input('edit_mini_mark'),
+            'full_mark' => $request->input('edit_full_mark'),
+
         ])->update();
         return $subject;
     }

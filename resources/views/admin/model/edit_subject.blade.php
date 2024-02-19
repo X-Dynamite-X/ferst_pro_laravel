@@ -16,14 +16,19 @@
                                 @method('put')
                                 <div class="form">
                                     <div class="md-5">
-                                        <label for="subject" class="form-label ">subject</label>
+                                        <label for="editsubject" class="form-label ">subject</label>
                                         <input type="text" name="editsubject" id="editsubject" class="form-control"
                                             placeholder="Enter subject:" value="{{ $subject->subject }}">
                                     </div>
                                     <div class="md-5">
-                                        <label for="Mark" class="form-label ">Mark</label>
-                                        <input type="number" name="editmark" id="Mark" class="form-control"
-                                            placeholder="Enter Mark:" value="{{ $subject->full_mark }}">
+                                        <label for="edit_mini_mark" class="form-label ">Mark</label>
+                                        <input type="number" name="edit_mini_mark" id="edit_mini_mark" class="form-control"
+                                            placeholder="Edit Mini Mark:" value="{{ $subject->mini_mark }}">
+                                    </div>
+                                    <div class="md-5">
+                                        <label for="edit_full_mark" class="form-label ">Mark</label>
+                                        <input type="number" name="edit_full_mark" id="edit_full_mark" class="form-control"
+                                            placeholder="Edit Full Mark:" value="{{ $subject->full_mark }}">
                                     </div>
                                 </div>
                         </div>

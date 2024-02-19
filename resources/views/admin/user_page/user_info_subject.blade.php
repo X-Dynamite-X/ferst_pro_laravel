@@ -13,6 +13,8 @@
                 <tr>
                     <td scope="col">ID</td>
                     <td scope="col">Subject</td>
+                    <td scope="col">Mono Mark</td>
+
                     <td scope="col">Full Mark</td>
                     <td scope='col'>Add Student</td>
                     <td scope="col">Show Student</td>
@@ -25,6 +27,7 @@
                     <tr id="tr{{ $subject->id }}">
                         <td scope="row">{{ $subject->id }}</td>
                         <td scope="row" id="subject{{ $subject->id }}">{{ $subject->subject }}</td>
+                        <td scope="row" id="mini_mark{{ $subject->id }}">{{ $subject->mini_mark }}</td>
                         <td scope="row" id="full_mark{{ $subject->id }}">{{ $subject->full_mark }}</td>
                         <td scope="row">
                             <button type="button" class="btn btn-success" data-bs-toggle="modal"
@@ -65,6 +68,7 @@
 </div>
 @section('js')
     <script>
+        var csrf_token = "{{ csrf_token() }}";
         var url_delete = "{{ route('delete_subject', '') }}"
         var url_updata = "{{ route('update_subject', '') }}"
     </script>

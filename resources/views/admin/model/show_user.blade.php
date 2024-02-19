@@ -9,24 +9,24 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="row">
-                            <p class="col-2 ">ID:</p>
-                            <h5 class='col-2'>{{ $user->id }}</h5>
+                        <div class="md-5">
+                            <p class="d-inline ">ID:</p>
+                            <h5 class='d-inline'>{{ $user->id }}</h5>
                         </div>
-                        <div class="row">
-                            <p class="col-2 ">Username:</p>
-                            <h5 class='col-2'>{{ $user->name }}</h5>
+                        <div class="md-5">
+                            <p class="d-inline ">Username:</p>
+                            <h5 class='d-inline'>{{ $user->name }}</h5>
                         </div>
-                        <div class="row">
-                            <p class="col-2 ">Email:</p>
-                            <h5 class='col-2'>{{ $user->email }}</h5>
+                        <div class="md-5">
+                            <p class="d-inline ">Email:</p>
+                            <h5 class='d-inline'>{{ $user->email }}</h5>
                         </div>
-                        <div class="row">
-                            <p class="col-2 ">acteve:</p>
+                        <div class="md-5">
+                            <p class="d-inline ">acteve:</p>
                             @if ($user->is_actev == 1)
-                                <h5 scope="row" class="col-3  text-success "> Is Actev </h5>
+                                <h5 scope="row" class="d-inline  text-success "> Is Actev </h5>
                             @else
-                                <h5 scope="row" class="col-3  text-danger"> Not Actev </h5>
+                                <h5 scope="row" class="d-inline  text-danger"> Not Actev </h5>
                             @endif
                         </div>
                     </div>

@@ -15,4 +15,9 @@
     <script src="{{ asset('js/model/create_subject.js') }}"></script>
     <script src="{{ asset('js/model/delet_subject.js') }}"></script>
     <script src="{{ asset('js/model/edit_subject.js') }}"></script>
+    <script src="{{ asset('js/model/add_subject_user.js') }}"></script>
+    <script src="{{ asset('js/model/edit_subject_user.js') }}"></script>
+    <script src="{{ asset('js/model/delete_subject_user.js') }}"></script>
+
+
     @endsection("model_js")

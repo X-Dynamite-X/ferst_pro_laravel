@@ -22,7 +22,6 @@
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
             </div>
 
         </div>
@@ -66,12 +65,15 @@
                         </li>
                     @endguest
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/admin/user">Home</a>
+                        <a class="nav-link" aria-current="page" href="/admin/user">users</a>
                     </li>
 
 
                     <li class="nav-item">
                         <a class="nav-link" href="/admin/user_subject">supgect</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/studant/home">studant</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"

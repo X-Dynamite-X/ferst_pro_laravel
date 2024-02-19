@@ -51,6 +51,6 @@ body[data-bs-theme="dark"] {
     color: #ffffff;
 }
 body[data-bs-theme="light"] {
-    background-color: #feefee;
+    background-color: #dededede;
     color: #000000;
 }

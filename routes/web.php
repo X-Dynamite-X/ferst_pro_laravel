@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Subject_Controller;
 use App\Http\Controllers\SubjectUser_Controller;
+use App\Http\Controllers\StudantController;
+
 
 
 
@@ -20,9 +22,8 @@ use App\Http\Controllers\SubjectUser_Controller;
 */
 
 Route::prefix('studant')->group(function () {
-    Route::get('/home', function () {
-        return view('home');
-    });
+    Route::get('/home', [StudantController::class, 'index'])->name('studant_home');
+
 });
 //create_user
 Route::prefix('admin')->group(function () {
@@ -35,6 +36,10 @@ Route::prefix('admin')->group(function () {
     Route::delete('/user/delete/{id}', [HomeController::class, 'destroy'])->name('delete_user');
     Route::put('/user/edit/{id}/', [HomeController::class, 'editUser'])->name('edit_user');
     Route::post('/user_subject/{subject_id}/add_user_for_subject', [SubjectUser_Controller::class, 'store'])->name('add_user_for_subject');
+    Route::put('/user_subject/{subject_id}/{user_id}/update_user_mark', [SubjectUser_Controller::class, 'update'])->name('update_user_mark');
+    Route::delete('/user_subject/{subject_id}/{user_id}/delete_user_mark', [SubjectUser_Controller::class, 'destroy'])->name('delete_user_mark');
+
+
 });
 
 Auth::routes(['verify' => true]);
