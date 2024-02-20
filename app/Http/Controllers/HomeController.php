@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-
+use App\Models\SubjectUser;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,14 +27,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        $user = Auth::user();
+        $subjects_users = SubjectUser::all()->where( 'user_id', $user->id);
+        $number_of_subjects = $subjects_users->count();
+
+        return view('studant_page',compact('user', 'subjects_users',"number_of_subjects"));
     }
     public function showUser()
     {
         $users = User::all();
         $user_auth = Auth::user();
-
-        return view('user_page', compact('users','user_auth'));
+        return view('user_page', compact('users', 'user_auth'));
     }
     public function create_user(Request $request)
     {
@@ -43,13 +47,17 @@ class HomeController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:3|confirmed',
             'is_actev' => 'nullable|boolean',
+            'is_admin' => 'nullable|boolean',
+
         ]);
 
         $user = User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
-            'is_actev'=>true,
+            'is_actev' => true,
+            'is_admin' => false,
+
         ]);
 
         return $user;
@@ -87,9 +95,4 @@ class HomeController extends Controller
             return response()->json(['message' => 'An error occurred while trying to delete the record.'], 500);
         }
     }
-
-
-
-
-
 }

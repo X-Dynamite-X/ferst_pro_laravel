@@ -1,6 +1,6 @@
 <nav class="navbar bg-body-tertiary fixed-top ">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">home</a>
+        {{ Auth::user()->name }}
         <div>
             @guest
                 @if (Route::has('login'))
@@ -11,8 +11,6 @@
                 @endif
             @endguest
         </div>
-
-
         <div class="row">
             <div class="col-6 pt-2">
                 <input type="checkbox" class="theme-checkbox" id='toggleThemeBtn'>
@@ -23,12 +21,11 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
-
         </div>
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">{{ Auth::user()->name }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
@@ -50,45 +47,31 @@
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
-
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
                             </div>
                         </li>
-                    @endguest
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/admin/user">users</a>
-                    </li>
-
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin/user_subject">supgect</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/studant/home">studant</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
+                        @if (Auth::user()->is_admin)
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/admin/user">users</a>
                             </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/user_subject">supgect</a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">studant</a>
+                            </li>
+                        @endif
+                    @endguest
+
                 </ul>
             </div>
         </div>

@@ -60,11 +60,20 @@
                             </div>
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Register') }}
-                                    </button>
+                                    <div class="m-3">
+                                        <button type="submit" class="btn btn-primary">
+                                            {{ __('Register') }}
+                                        </button>
+                                    </div>
+                                    <div class=" pt-5">
+                                        <a href="/login" class="btn btn-success">
+                                            {{ __('I  have account') }}
+                                        </a>
+                                    </div>
                                 </div>
+
                             </div>
+
                         </form>
                     </div>
                 </div>

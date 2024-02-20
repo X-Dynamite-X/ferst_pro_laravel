@@ -6,7 +6,7 @@
             <div class="modal-dialog modal-lg w-100">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5 " id="ModelShowsubjectLabel">{{ $subject->id }}</h1>
+                        <h1 class="modal-title fs-5 " id="ModelShowsubjectLabel">{{ $subject->subject }}</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -17,7 +17,6 @@
                                     <td scope="col">Username</td>
                                     <td scope="col">subject</td>
                                     <td scope="col">Mark</td>
-                                    
                                     <td scope="col">Edit</td>
                                     <td scope="col">delete</td>
                                 </tr>
