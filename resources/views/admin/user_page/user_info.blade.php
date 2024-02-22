@@ -13,7 +13,7 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Username</th>
-                    <th scope="col">Emaile</th>
+                    <th scope="col">Email</th>
                     <th scope="col">Acteve</th>
                     <th scope="col">Show</th>
                     <th scope="col">Edits</th>

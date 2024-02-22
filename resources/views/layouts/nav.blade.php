@@ -1,14 +1,19 @@
 <nav class="navbar bg-body-tertiary fixed-top ">
-    <div class="container-fluid">
+    @auth
+        <div class="container-fluid">
         {{ Auth::user()->name }}
         <div>
+    @endauth
             @guest
+            <div class="position-relative start-50">
                 @if (Route::has('login'))
-                    <a class="navbar-brand" href="{{ route('login') }}">{{ __('Login') }}</a>
-                @endif
-                @if (Route::has('register'))
-                    <a class="navbar-brand" href="{{ route('register') }}">{{ __('Register') }}</a>
-                @endif
+                <a class="navbar-brand" href="{{ route('login') }}">{{ __('Login') }}</a>
+            @endif
+            @if (Route::has('register'))
+                <a class="navbar-brand" href="{{ route('register') }}">{{ __('Register') }}</a>
+            @endif
+            </div>
+
             @endguest
         </div>
         <div class="row">
@@ -24,10 +29,13 @@
         </div>
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header">
+            @auth
+                 <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasNavbarLabel">{{ Auth::user()->name }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
+            @endauth
+
             <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     @guest

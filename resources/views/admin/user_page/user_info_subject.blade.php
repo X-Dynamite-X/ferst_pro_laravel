@@ -13,8 +13,7 @@
                 <tr>
                     <td scope="col">ID</td>
                     <td scope="col">Subject</td>
-                    <td scope="col">Mono Mark</td>
-
+                    <td scope="col">Mini Mark</td>
                     <td scope="col">Full Mark</td>
                     <td scope='col'>Add Student</td>
                     <td scope="col">Show Student</td>

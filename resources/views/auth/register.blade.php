@@ -64,11 +64,10 @@
                                         <button type="submit" class="btn btn-primary">
                                             {{ __('Register') }}
                                         </button>
-                                    </div>
-                                    <div class=" pt-5">
-                                        <a href="/login" class="btn btn-success">
-                                            {{ __('I  have account') }}
-                                        </a>
+
+                                        <a href="/login" class="btn btn-link">
+                                            {{ __('I have already account... ! ') }}
+                                        </a> 
                                     </div>
                                 </div>
 
