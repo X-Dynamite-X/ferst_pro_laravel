@@ -2,11 +2,11 @@
 
     @foreach ($subjects as $subject)
         <div class="modal fade" aria-hidden="true" id="ModelShowsubject{{ $subject->id }}" data-bs-backdrop="static"
-            data-bs-keyboard="false" tabindex="-1" aria-labelledby="ModelShowsubjectLabel" aria-hidden="true">
+            data-bs-keyboard="false" tabindex="-1" aria-labelledby="ModelShowsubjectLabel{{ $subject->id }}" aria-hidden="true">
             <div class="modal-dialog modal-lg w-100">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5 " id="ModelShowsubjectLabel">{{ $subject->subject }}</h1>
+                        <h1 class="modal-title fs-5 " id="ModelShowsubjectLabel{{ $subject->id }}">{{ $subject->subject }}</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -27,7 +27,7 @@
                                         <td>{{ $user->id }}</td>
                                         <td class="subjects_user_id{{$user->id}}">{{ $user->name }}</td>
                                         <td class="subject_users_id{{$subject->id}}">{{ $subject->subject }}</td>
-                                        <td id="subject_user_mark{{ $subject->id }}{{ $user->id }}">
+                                        <td class="subject_user_mark{{ $subject->id }}{{ $user->id }}">
                                             {{ $user->pivot->user_mark }}</td>
                                         <td>
                                             <button type="button" class="btn btn-warning" data-bs-toggle="modal"

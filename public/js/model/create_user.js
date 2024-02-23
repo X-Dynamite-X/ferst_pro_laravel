@@ -42,8 +42,16 @@ $(document).ready(function () {
                                         </div>
                                         <div class="md-5">
                                             <p class="d-inline  ">acteve:</p>
-                                                <h5 scope="md-5" class="d-inline  ${data.is_actev? "text-success i": "text-danger"} ">
-                                                ${data.is_actev ? "Is Actev" : "Not Actev"} </h5>
+                                                <h5 scope="md-5" class="d-inline  ${
+                                                    data.is_actev
+                                                        ? "text-success i"
+                                                        : "text-danger"
+                                                } ">
+                                                ${
+                                                    data.is_actev
+                                                        ? "Is Actev"
+                                                        : "Not Actev"
+                                                } </h5>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -74,7 +82,7 @@ $(document).ready(function () {
                         <div class="modal-body">
                             <div class="container">
                                 <form id="form_edit_user${data.id}"
-                                    action="${url_edit_user}${
+                                    action="${url_edit_user}/${
                     data.id
                 }" method="post">
                                     <input type="hidden" name="_token" value="${csrf_token}" autocomplete="off">
@@ -120,7 +128,7 @@ $(document).ready(function () {
                                 data-bs-target="#ModelShow${
                                     data.id
                                 }">Show</button>
-                            <button type="submit" data-id="${data.id}"
+                            <button type="button" data-id="${data.id}"
                                 class="btn btn-success btn_update_user">Save</button>
                             </form>
                         </div>
@@ -130,13 +138,13 @@ $(document).ready(function () {
             `;
                 $(".EditModel").append(user_edit_model);
                 var row_user = `
-                <tr id='row_${data.id}'>
-                    <td scope="row">${data.id}</td>
-                    <td scope="row">${data.name}</td>
-                    <td scope="row">${data.email}</td>
-                    <td scope="row" class="is_actev ${
-                        data.is_actev ? "text-success i" : "text-danger"
-                    }">${data.is_actev ? "Is Actev" : "Not Actev"}</td>
+                <tr id='tr${data.id}'>
+                    <td scope="row" >${data.id}</td>
+                    <td scope="row" id='name${data.id}'>${data.name}</td>
+                    <td scope="row" id='email${data.id}'>${data.email}</td>
+                    <td scope="row" id='is_actev${data.id}' class="is_actev ${
+                    data.is_actev ? "text-success i" : "text-danger"
+                }">${data.is_actev ? "Is Actev" : "Not Actev"}</td>
                     <td scope="row">
                         <button type="button" class="btn btn-primary" id="show_user${
                             data.id
@@ -153,7 +161,7 @@ $(document).ready(function () {
                     </td>
                     <td scope="row">
                     <form id="form_delete_user${data.id}"
-                        action="${url_delete_user}${data.id}" method="post">
+                        action="${url_delete_user}/${data.id}" method="post">
                         <input type="hidden" name="_token" value="${csrf_token}">
                         <input type="hidden" name="_method" value="delete">
                         <button type="button" data-name="${

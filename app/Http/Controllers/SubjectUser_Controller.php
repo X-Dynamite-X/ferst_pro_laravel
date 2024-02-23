@@ -52,8 +52,7 @@ class SubjectUser_Controller extends Controller
         $subject = Subject::find($request->subject_id);
 
         return [$user, $subject];
-        // return $subject->users;
-        // return redirect()->back()->with('success', 'Users added to the subject successfully.');
+
     }
 
     /**
@@ -106,10 +105,9 @@ class SubjectUser_Controller extends Controller
             // Delete the record from the pivot table
             $subjectUser->delete();
 
-            return redirect()->back()->with('success', 'User successfully removed from the subject.');
+            return $subjectUser;
         } else {
             return redirect()->back()->with('error', 'Error in the data.');
         }
     }
-
 }

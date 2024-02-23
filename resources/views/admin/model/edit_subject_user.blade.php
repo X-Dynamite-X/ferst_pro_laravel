@@ -1,5 +1,6 @@
 <div class="EditModelsubjectUser">
     @foreach ($subjects as $subject)
+    
         @foreach ($subject->users as $user)
             <div class="modal fade " id="EditModelsubjectUser{{ $subject->id }}{{ $user->id }}"
                 data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="EditModelsubjectUser"
@@ -26,12 +27,10 @@
                                     <div class="md-5">
                                         <label class="form-label d-inline">subject</label>
                                         <h5 class="d-inline">{{ $subject->subject }}</h5>
-
                                     </div>
                                     <div class="md-5">
                                         <label class="form-label d-inline">Username</label>
                                         <h5 class="d-inline">{{ $user->name }}</h5>
-
                                     </div>
                                     <div class="md-5">
                                         <label for="Mark{{ $user->id }}" class="form-label d-inline ">Mark</label>
@@ -39,7 +38,6 @@
                                             id="Mark{{ $user->id }}" class="w-auto  form-control d-inline"
                                             placeholder="Enter Mark:" value="{{ $user->pivot->user_mark }}">
                                     </div>
-
                             </div>
                         </div>
                         <div class="modal-footer">

@@ -1,7 +1,7 @@
 <div class="AddModelsubjectUser">
     @foreach ($subjects as $subject)
         <div class="modal fade " id="AddModelsubjectUser{{ $subject->id }}" data-bs-backdrop="static"
-            data-bs-keyboard="false" tabindex="-1" aria-labelledby="AddModelsubjectUserLabel" aria-hidden="true">
+            data-bs-keyboard="false" tabindex="-1" aria-labelledby="AddModelsubjectUserLabel{{ $subject->id }}" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -18,7 +18,7 @@
                                 <input type="hidden" name="subject_id" value="{{ $subject->id }}">
                                 <div class="md-5">
                                     <select class="form-select form-select-sm mb-3" aria-label="Small select "
-                                        id="user_ids" name="user_ids[]" multiple required>
+                                        id="user_ids{{$subject->id}}" name="user_ids[]" multiple required>
                                         @foreach ($users as $user)
                                             @if (!$subject->users->contains($user))
                                                 @if ($user->id !== $user_auth->id)
