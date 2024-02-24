@@ -1,6 +1,5 @@
 <div class="EditModelsubjectUser">
     @foreach ($subjects as $subject)
-    
         @foreach ($subject->users as $user)
             <div class="modal fade " id="EditModelsubjectUser{{ $subject->id }}{{ $user->id }}"
                 data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="EditModelsubjectUser"

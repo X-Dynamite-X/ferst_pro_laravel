@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -28,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -54,7 +55,6 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:3', 'confirmed'],
             'is_actev'=>['nullable','boolean'],
             'is_admin'=>['nullable','boolean'],
-
         ]);
     }
 
@@ -66,12 +66,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'is_actev'=>false,
-            'is_admin'=>false,
+            'is_actev' => false,
+            'is_admin' => false,
         ]);
+
+        // إلغاء تسجيل الدخول تلقائيًا بعد إنشاء المستخدم
+        Auth::logout();
+
+        // return redirect('/waiting')->send();
+        return redirect('/waiting')->with('info', 'Your account has been created successfully. Please wait for your account to be activated.');
+
+
     }
 }

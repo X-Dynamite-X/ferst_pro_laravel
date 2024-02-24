@@ -45,7 +45,7 @@ $(document).on('click', '.btn_edit_subject_user', function() {
                 $("#subject_user_mark" + subject_id+user_id).text(data.user_mark);
                 $("#EditModelsubjectUser"+subject_id+user_id).modal("hide");
                 $("#ModelShowsubject"+subject_id).modal("show");
-                
+
             },
             error: function (data) {
                 console.log("Errou for send data");
