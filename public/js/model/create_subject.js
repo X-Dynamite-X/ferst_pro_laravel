@@ -6,7 +6,10 @@ $(document).ready(function () {
             type: form.attr("method"),
             url: form.attr("action"),
             data: formData,
-            success: function (data) {
+            success: function (res) {
+                data = res[1];
+                var admin = res[2].id;
+
                 var editModel = `<div class="modal fade" data-bs-theme="dark" id="EditModelsubject${data.id}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="EditModelsubjectLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -68,9 +71,118 @@ $(document).ready(function () {
                     </td>
                 </tr>
             `;
-
                 $("#res").append(tr);
+
+                var add_subject_user_model = `
+                <div class="modal fade" id="AddModelsubjectUser${
+                    data.id
+                }" data-bs-backdrop="static"
+                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="AddModelsubjectUserLabel${
+                        data.id
+                    }" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="AddModelsubjectUserLabel${
+                                    data.id
+                                }">Add User in
+                                    ${data.subject} subject</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body h">
+                                <div class="container">
+                                    <form id="form_add_subject_user${data.id}"
+                                        action="/admin/user_subject/${
+                                            data.id
+                                        }/add_user_for_subject"
+                                        method="post">
+                                        <input type="hidden" name="_token" value="${csrf_token}" autocomplete="off">
+                                        <input type="hidden" name="subject_id" value="${
+                                            data.id
+                                        }">
+                                        <div class="md-5">
+                                        <select class="form-select form-select-sm mb-3" aria-label="Small select"
+                                        id="user_ids${
+                                            data.id
+                                        }" name="user_ids[]" multiple required>
+                                        ${
+                                            res[0]
+                                                ? (() => {
+                                                      let optionsHTML = "";
+                                                      for (
+                                                          let i = 0;
+                                                          i < res[0].length;
+                                                          i++
+                                                      ) {
+                                                          var user = res[0][i];
+                                                          if (
+                                                              user.id != admin
+                                                          ) {
+                                                              optionsHTML += `
+                                                        <option id="stud${data.id}${user.id}" name="name" value="${user.id}">
+                                                            ${user.name}
+                                                        </option>
+                                            `;
+                                                          }
+                                                      }
+                                                      return optionsHTML;
+                                                  })()
+                                                : ""
+                                        }
+                                        </select>
+
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" data-id="${
+                                            data.id
+                                        }"
+                                            class="btn btn-success add_subject_user_btn">Save</button>
+                                    </div>
+                                    </form>
+                        </div>
+                    </div>
+                </div>
+            `;
+                $(".AddModelsubjectUser").append(add_subject_user_model);
+
+                var show_user_subject = `
+            <div class="modal fade" aria-hidden="true" id="ModelShowsubject${data.id}" data-bs-backdrop="static"
+            data-bs-keyboard="false" tabindex="-1" aria-labelledby="ModelShowsubjectLabel${data.id}" aria-hidden="true">
+            <div class="modal-dialog modal-lg w-100">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5 " id="ModelShowsubjectLabel${data.id}">${data.subject}</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <td scope="col">ID User </td>
+                                    <td scope="col">Username</td>
+                                    <td scope="col">subject</td>
+                                    <td scope="col">Mark</td>
+                                    <td scope="col">Edit</td>
+                                    <td scope="col">delete</td>
+                                </tr>
+                            </thead>
+                            <tbody id="tr_show_user_subject${data.id}">
+                            </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `;
+                $(".ModelShowsubject").append(show_user_subject);
             },
+
             error: function (data) {
                 console.log("Errou for send data");
                 alert("Errou for send data");

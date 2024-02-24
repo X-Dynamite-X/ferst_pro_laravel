@@ -43,7 +43,7 @@ class LoginController extends Controller
             return redirect('/waiting'); // يمكنك توجيه المستخدم إلى أي صفحة تحددها هنا
         }
         if (auth()->check() && auth()->user()->is_admin == 1) {
-            return redirect('/admin/user_subject'); // يمكنك توجيه المستخدم إلى أي صفحة تحددها هنا
+            return redirect('/admin/user'); // يمكنك توجيه المستخدم إلى أي صفحة تحددها هنا
         }
 
         return redirect('/');

@@ -57,7 +57,7 @@
                 <table class="table table-striped table-hover">
                     <tr>
                         <th>Subjects</th>
-                        <th>Mini markers</th>
+                        <th>Minimum Mark for saccess</th>
                         <th>Full markers</th>
                         <th>markers</th>
                     </tr>

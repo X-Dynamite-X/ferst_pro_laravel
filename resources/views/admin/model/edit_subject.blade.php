@@ -23,7 +23,7 @@
                                     <div class="md-5">
                                         <label for="edit_mini_mark" class="form-label ">Mark</label>
                                         <input type="number" name="edit_mini_mark" id="edit_mini_mark" class="form-control"
-                                            placeholder="Edit Mini Mark:" value="{{ $subject->mini_mark }}">
+                                            placeholder="Edit Minimum Mark for saccess:" value="{{ $subject->mini_mark }}">
                                     </div>
                                     <div class="md-5">
                                         <label for="edit_full_mark" class="form-label ">Mark</label>

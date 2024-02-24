@@ -36,10 +36,12 @@ class Subject_Controller extends Controller
         // dd($request->all());
         $subject = Subject::create([
             'subject' => $request->input('subject_input'),
-            'mini_mark' => "0",
+            'mini_mark' => $request->input('mini_mark'),
             'full_mark' => $request->input('full_mark'),
         ]);
-        return ($subject);
+        $users =User::all();
+        $admin = Auth::user();
+        return [$users, $subject,$admin];
     }
 
 

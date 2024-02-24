@@ -19,14 +19,18 @@ use App\Http\Middleware\CheckIsAdmin;
 |
 */
 Route::prefix('admin')->middleware([CheckIsAdmin::class])->group(function () {
-    Route::get('/user_subject', [Subject_Controller::class, 'index'])->name('index_subject');
-    Route::post('/user_subject/sort', [Subject_Controller::class, 'store'])->name('store_subject');
-    Route::delete('/user_subject/delete/{id}', [Subject_Controller::class, 'destroy'])->name('delete_subject');
-    Route::put('/user_subject/edit/{id}', [Subject_Controller::class, 'update'])->name('update_subject');
+    // user Route
+
     Route::get('/user', [HomeController::class, 'showUser'])->name('user_home');
     Route::post('/user/create_user', [HomeController::class, 'create_user'])->name('create_user');
     Route::delete('/user/delete/{id}', [HomeController::class, 'destroy'])->name('delete_user');
     Route::put('/user/edit/{id}/', [HomeController::class, 'editUser'])->name('edit_user');
+    // subject Route
+    Route::get('/user_subject', [Subject_Controller::class, 'index'])->name('index_subject');
+    Route::post('/user_subject/sort', [Subject_Controller::class, 'store'])->name('store_subject');
+    Route::delete('/user_subject/delete/{id}', [Subject_Controller::class, 'destroy'])->name('delete_subject');
+    Route::put('/user_subject/edit/{id}', [Subject_Controller::class, 'update'])->name('update_subject');
+    // subject user Route
     Route::post('/user_subject/{subject_id}/add_user_for_subject', [SubjectUser_Controller::class, 'store'])->name('add_user_for_subject');
     Route::put('/user_subject/{subject_id}/{user_id}/update_user_mark', [SubjectUser_Controller::class, 'update'])->name('update_user_mark');
     Route::delete('/user_subject/{subject_id}/{user_id}/delete_user_mark', [SubjectUser_Controller::class, 'destroy'])->name('delete_user_mark');
