@@ -77,8 +77,8 @@ class RegisterController extends Controller
         // إلغاء تسجيل الدخول تلقائيًا بعد إنشاء المستخدم
         Auth::logout();
 
-        // return redirect('/waiting')->send();
-        return redirect('/waiting')->with('info', 'Your account has been created successfully. Please wait for your account to be activated.');
+        return redirect('/waiting')->send();
+        // return redirect('/waiting')->with('info', 'Your account has been created successfully. Please wait for your account to be activated.');
 
 
     }
