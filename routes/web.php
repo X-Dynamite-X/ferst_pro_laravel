@@ -34,6 +34,7 @@ Route::prefix('admin')->middleware([CheckIsAdmin::class])->group(function () {
     Route::put('/user_subject/{subject_id}/{user_id}/update_user_mark', [SubjectUser_Controller::class, 'update'])->name('update_user_mark');
     Route::delete('/user_subject/{subject_id}/{user_id}/delete_user_mark', [SubjectUser_Controller::class, 'destroy'])->name('delete_user_mark');
 });
+Auth::routes(['verify' => true]);
     // Login and Register  Route
 Route::middleware('auth')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
