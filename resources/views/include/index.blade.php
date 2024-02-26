@@ -13,7 +13,7 @@
         integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
-
+{{-- <link rel="stylesheet" href="../../css/app.css"> --}}
 
     @yield('css')
 </head>
@@ -21,7 +21,7 @@
 <body class="" data-bs-theme="dark">
     @include('layouts.nav')
     @yield('userInfo')
-    
+
     <main class=" pt-5 mt-5">
         @yield('content')
     </main>
@@ -50,7 +50,7 @@
     crossorigin="anonymous"></script>
 <script src="{{ asset('js/index.js') }}"></script>
 
-
+{{-- <script src="../../js/app.js"></script> --}}
 @yield('js')
 @yield('model_js')
 

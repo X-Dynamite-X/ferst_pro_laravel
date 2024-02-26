@@ -7,7 +7,7 @@ use App\Http\Controllers\Subject_Controller;
 use App\Http\Controllers\SubjectUser_Controller;
 use App\Http\Middleware\CheckIsAdmin;
 
-
+use App\Http\Controllers\ChatController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +38,8 @@ Auth::routes(['verify' => true]);
     // Login and Register  Route
 Route::middleware('auth')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/chat', [ChatController::class, 'index'])->name('chat');
+
 });
 Route::get('/waiting', function () {return view('studant.waiting');})->name('waiting');
 
