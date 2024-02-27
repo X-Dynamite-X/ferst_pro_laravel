@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Events\Chat;
+use Illuminate\Broadcasting\Broadcasters\PusherBroadcaster;
+use Pusher\Pusher;
 
 class ChatController extends Controller
 {
@@ -15,6 +18,35 @@ class ChatController extends Controller
         return view('studant.chat.chat');
     }
 
+
+
+    public function broadcast(Request $request)
+    {
+        broadcast (new Chat ($request->get('message')))->toOthers();
+        return view('studant.chat.chat',['message'=> $request->get( 'message')]);
+    }
+    public function receive(Request $request)
+    {
+
+        return view('studant.chat.chat',['message'=> $request->get( 'message')]);
+    }
+
+    // public function store(Request $request)
+    // {
+    //      dd($request);
+    //     event(new Chat(
+    //         $request->input('username'),
+    //         $request->input('message'),
+
+    //     ));
+
+    //     return true;
+
+
+    //     // return view('studant.chat.chat');
+    // }
+
+
     /**
      * Show the form for creating a new resource.
      */
@@ -26,10 +58,7 @@ class ChatController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
-    }
+
 
     /**
      * Display the specified resource.

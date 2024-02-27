@@ -39,6 +39,10 @@ Auth::routes(['verify' => true]);
 Route::middleware('auth')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/chat', [ChatController::class, 'index'])->name('chat');
+    Route::post('/broadcast', [ChatController::class, 'broadcast'])->name('broadcast');
+    Route::post('/receive', [ChatController::class, 'receive'])->name('receive');
+
+
 
 });
 Route::get('/waiting', function () {return view('studant.waiting');})->name('waiting');
