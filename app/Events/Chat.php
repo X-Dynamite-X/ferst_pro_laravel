@@ -20,12 +20,9 @@ class Chat implements ShouldBroadcast
      */
     public function __construct(string $message)
     {
-
     // $this->username =$username;
-    $this->message =$message;
-
-
-}
+        $this->message =$message;
+    }
 
     /**
      * Get the channels the event should broadcast on.
@@ -34,9 +31,7 @@ class Chat implements ShouldBroadcast
      */
     public function broadcastOn(): array
     {
-        return [
-            'public'
-        ];
+        return ['public'];
     }
     public function broadcastAs ():string
     {

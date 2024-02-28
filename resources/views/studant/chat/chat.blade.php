@@ -5,75 +5,76 @@
 @endsection('scc')
 
 @section('content')
-<div class="chat">
-    <div class="top">
-        <img class="card-img-top w-25" src="{{ asset('img/-5818810161089854385_120.jpg') }}" alt="" srcset="">
-        <div class="">
-            <p>Dynamite</p>
-            <small>Online</small>
+    <div class="chat">
+        <div class="top">
+            <img src="{{ asset('img/-5818810161089854386_120.jpg') }}">
+            <div class="">
+                <p>Dynamite</p>
+                <small>Online</small>
+            </div>
+
+        </div>
+        <div class="messages">
+            @include('studant.chat.receive', ['message' => 'Hey, how can I help you?'])
+        </div>
+        <div class="bottom">
+            <form id="chatForm" action="{{ route('broadcast') }}" method="POST">
+                @csrf
+                <input type="text" name="message" id="message" placeholder="Enter  your message...">
+                <button class="send_msg " type="button"></button>
+            </form>
         </div>
     </div>
-    <div class="messages">
-        @include('studant.chat.receive', ['message' => 'Hey! What`s up '])
-        {{-- @include('studant.chat.broadcast') --}}
-    </div>
-    <div class="bottom input-group">
-        <form id="chatForm" action="{{ url('/broadcast') }}" method="POST">
-            @csrf
-            <input type="text" name="message" class="input-form" id="message">
-            <button type="submit" class="btn btn-primary send_msg"></button>
-        </form>
-    </div>
-</div>
 @endsection
 
 
 @section('js')
-<script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+    <script src="{{ asset('/js/chat/chat.js') }}"></script>
+
+
+    {{--
     <script>
         // Enable pusher logging - don't include this in production
-        // const pusher = new Pusher('{{config("broadcasting.connections.pusher.key")}}',{cluster:'ap2'});
+        // var pusher = new Pusher('{{ config('broadcasting.connections.pusher.key') }}',{cluster:'ap2'});
         // const channel = pusher.subscribe('public');
 
         const pusher = new Pusher('0881139f278cbc02059c', {
-    cluster: 'ap2',
+            cluster: 'ap2',
+            authEndpoint: '/broadcasting/auth',
+            encrypted: true,
+        });
 
-    // Add the following line with your correct timezone
-    authEndpoint: '/broadcasting/auth',
-    encrypted: true,
-});
-const channel = pusher.subscribe('public');
+        const channel = pusher.subscribe('public');
 
         channel.bind("chat", function(data) {
+            console.log(data);
             $.post('/receive', {
-                _token: "{{csrf_token()}}",
-                message: data.message,
-            })
-            .done(function(res) {
-                $('.messages > .message').last().after(res);
-                $(document).scrollTop($(document).height());
-            });
-        });
-
-        $('#chatForm').submit(function(e) {
-            e.preventDefault();
-
-            $.ajax({
-                url:"/broadcast",.
-                type: "post",
-                method: 'post',
-                socket_id: pusher.connection.socket_id;
-
-                data: {
                     _token: "{{ csrf_token() }}",
-                    message: $("#message").val(),
-                }
-            })
-            .done(function(res) {
-                $('.messages').append(res);
-                $('#message').val('');
-                $(document).scrollTop($(document).height());
-            });
+                    message: data.message,
+                })
+                .done(function(res) {
+                    $('.messages > .message').last().after(res);
+                    $(document).scrollTop($(document).height());
+                });
         });
-    </script>
+
+        $(document).on("click", ".send_msg", function() {
+            var form = $("#chatForm");
+            var formData = form.serialize();
+            console.log(formData);
+            $.ajax({
+                    url: "/broadcast",
+                    type: "post",
+                    method: 'post',
+                    socket_id: pusher.connection.socket_id,
+                    data: formData,
+                })
+                .done(function(res) {
+                    $('.messages > .message').last().after(res);
+                    $('#message').val('');
+                    $(document).scrollTop($(document).height());
+                });
+        });
+    </script> --}}
 @endsection("js")

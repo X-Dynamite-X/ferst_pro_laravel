@@ -19,16 +19,16 @@ class ChatController extends Controller
     }
 
 
-
     public function broadcast(Request $request)
     {
+        // $message =$request->get('message');
         broadcast (new Chat ($request->get('message')))->toOthers();
-        return view('studant.chat.chat',['message'=> $request->get( 'message')]);
+
+        return view('studant.chat.broadcast',['message'=> $request->get( 'message')]);
     }
     public function receive(Request $request)
     {
-
-        return view('studant.chat.chat',['message'=> $request->get( 'message')]);
+        return view('studant.chat.receive',['message'=> $request->get( 'message')]);
     }
 
     // public function store(Request $request)
