@@ -13,7 +13,7 @@
         integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
-{{-- <link rel="stylesheet" href="../../css/app.css"> --}}
+    {{-- <link rel="stylesheet" href="../../css/app.css"> --}}
 
     @yield('css')
 </head>
@@ -45,14 +45,20 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
-</body>
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-    crossorigin="anonymous"></script>
-<script src="{{ asset('js/index.js') }}"></script>
 
-{{-- <script src="../../js/app.js"></script> --}}
-@yield('js')
-@yield('model_js')
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+    <script src="{{ asset('js/index.js') }}"></script>
+
+    <script>
+        var csrf_token = "{{ csrf_token() }}";
+        @auth
+            var username ="{{$user->name}}";
+        @endauth
+
+    </script>
+    @yield('js')
+    @yield('model_js')
 
 </body>
 

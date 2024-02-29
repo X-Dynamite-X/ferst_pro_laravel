@@ -5,8 +5,11 @@ const pusher = new Pusher('0881139f278cbc02059c', {
   });
 
 const channel = pusher.subscribe("public");
+
 channel.bind("chat", function (data) {
-    // console.log(data.message);
+    console.log(data.name);
+    console.log(username);
+if (username != data.name) {
     $.post("/receive", {
         _token: csrf_token,
         message: data.message,
@@ -14,14 +17,16 @@ channel.bind("chat", function (data) {
         console.log(res);
         $(".messages > .message").last().after(res);
         $(document).scrollTop($(document).height());
-    });
+    });}
 });
 
 
 $(document).on("click", ".send_msg", function () {
     var form = $("#chatForm");
     var formData = form.serialize();
+    console.log(form);
     console.log(formData);
+
     $.ajax({
         url: form.attr("action"),
         type: form.attr("method"),
@@ -31,6 +36,8 @@ $(document).on("click", ".send_msg", function () {
             console.log('success');
         },
         error: function (response) {
+        console.log(response);
+
             console.log("Errou for send data");
             alert("Errou for send data");
         },

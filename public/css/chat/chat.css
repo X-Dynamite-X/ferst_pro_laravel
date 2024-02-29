@@ -13935,6 +13935,10 @@ textarea.form-control-lg {
   background-color: rgba(var(--bs-light-rgb), 1) !important;
   border-radius: var(--bs-border-radius) !important;
 }
+.name  p{
+  background-color: darkgreen;
+  weight: 30px;
+}
 .chat .messages .message img {
   display: inline-flex;
   margin: 0.25rem;

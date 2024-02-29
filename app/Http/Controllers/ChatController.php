@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Events\Chat;
 use Illuminate\Broadcasting\Broadcasters\PusherBroadcaster;
 use Pusher\Pusher;
-
+use App\Models\Message;
+use Illuminate\Support\Facades\Auth;
 class ChatController extends Controller
 {
     /**
@@ -14,21 +15,31 @@ class ChatController extends Controller
      */
     public function index()
     {
+        $messages = Message::all();
+        $user = Auth::user();
 
-        return view('studant.chat.chat');
+        return view('studant.chat.chat',compact('messages','user'));
     }
 
 
     public function broadcast(Request $request)
     {
-        // $message =$request->get('message');
-        broadcast (new Chat ($request->get('message')))->toOthers();
+        $message = $request->get('message');
+        $user = Auth::user()->name;
 
-        return view('studant.chat.broadcast',['message'=> $request->get( 'message')]);
+        $cre_message = Message::create([
+            'name' =>$user,
+            'message' => $request->input('message'),
+        ]);
+        broadcast (new Chat ($user ,$message))->toOthers();
+
+        return view('studant.chat.broadcast',['message'=> $request->get( 'message'),'username'=> $user]);
     }
     public function receive(Request $request)
     {
-        return view('studant.chat.receive',['message'=> $request->get( 'message')]);
+        $user = Auth::user()->name;
+
+        return view('studant.chat.receive',['message'=> $request->get( 'message'),'username'=> $user]);
     }
 
     // public function store(Request $request)
