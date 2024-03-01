@@ -1,4 +1,8 @@
 @extends('include.index')
+@section("content")
+<link rel="stylesheet" href="{{ asset('css/chat/mycode.css') }}">
+
+@endsection(css)
     @section('userInfo')
         @include('admin.user_page.user_info_subject')
     @endsection('userInfo')

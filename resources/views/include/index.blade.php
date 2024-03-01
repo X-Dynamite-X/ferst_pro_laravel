@@ -52,10 +52,7 @@
 
     <script>
         var csrf_token = "{{ csrf_token() }}";
-        @auth
-            var username ="{{$user->name}}";
-        @endauth
-
+   
     </script>
     @yield('js')
     @yield('model_js')

@@ -38,9 +38,9 @@ Auth::routes(['verify' => true]);
     // Login and Register  Route
 Route::middleware('auth')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/chat', [ChatController::class, 'index'])->name('chat');
+    Route::get('/chat/{subject}', [ChatController::class, 'index'])->name('chat');
     Route::post('/broadcast', [ChatController::class, 'broadcast'])->name('broadcast');
-    Route::post('/receive', [ChatController::class, 'receive'])->name('receive');
+    Route::post('/receive/{subject}', [ChatController::class, 'receive'])->name('receive');
 
 
 

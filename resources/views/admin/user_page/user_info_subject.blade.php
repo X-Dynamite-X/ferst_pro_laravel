@@ -17,8 +17,11 @@
                     <td scope="col">Full Mark</td>
                     <td scope='col'>Add Student</td>
                     <td scope="col">Show Student</td>
+                    <td scope="col">message</td>
+
                     <td scope="col">Edit</td>
                     <td scope="col">Delete</td>
+
                 </tr>
             </thead>
             <tbody id="res">
@@ -38,6 +41,12 @@
                                 data-bs-target="#ModelShowsubject{{ $subject->id }}"
                                 id="showSubjectUser{{ $subject->id }}">Show</button>
                         </td>
+                        <td scope="row">
+                            <button class="btn btn-primary">
+                               <a href="{{ route('chat', ['subject'=>$subject->id]) }}" class="link-light message_link">
+                           message</a>
+                       </button>
+                       </td>
                         <td scope="row">
                             <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                                 data-bs-target="#EditModelsubject{{ $subject->id }}"

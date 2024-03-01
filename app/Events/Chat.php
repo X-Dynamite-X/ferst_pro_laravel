@@ -14,16 +14,23 @@ class Chat implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
     public $message = '';
-    public $name = '';
+    public $subjectId='' ;
+    public $user='' ;
+
+
 
 
     /**
      * Create a new event instance.
      */
-    public function __construct(string $name,string $message)
+    public function __construct(string $subjectId,string   $user , string $message)
     {
-    $this->name =$name;
+
+    $this->subjectId = $subjectId;
+
+        $this->user =$user;
         $this->message =$message;
+
 
     }
 
@@ -34,7 +41,7 @@ class Chat implements ShouldBroadcast
      */
     public function broadcastOn(): array
     {
-        return ['public'];
+        return ['chat' . $this->subjectId];
     }
     public function broadcastAs ():string
     {

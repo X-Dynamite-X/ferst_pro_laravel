@@ -13,33 +13,47 @@ class ChatController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($subject)
     {
-        $messages = Message::all();
+        // $messages = Message::all();
         $user = Auth::user();
 
-        return view('studant.chat.chat',compact('messages','user'));
+        // return view('studant.chat.chat',compact('messages','user'));
+        $chats = Message::where('subject_id', $subject)->get();
+
+        return view('studant.chat.chat', [
+            'user'=>$user,
+            'subject' => $subject,
+            'chats' => $chats,
+        ]);
     }
 
 
     public function broadcast(Request $request)
     {
-        $message = $request->get('message');
+        $validatedData = $request->validate([
+
+            'subject_id' => 'required',
+            'message' => 'required',
+        ]);
+
+        $chat = Message::create([
+            'user_id' => Auth::user()->id,
+            'subject_id' => $validatedData['subject_id'],
+            'message' => $validatedData['message'],
+        ]);
         $user = Auth::user()->name;
 
-        $cre_message = Message::create([
-            'name' =>$user,
-            'message' => $request->input('message'),
-        ]);
-        broadcast (new Chat ($user ,$message))->toOthers();
+        broadcast(new Chat($chat->subject_id,$user , $chat->message))->toOthers();
 
-        return view('studant.chat.broadcast',['message'=> $request->get( 'message'),'username'=> $user]);
+        // broadcast (new Chat ($user,'public3' ,$message))->toOthers();
+
+        return view('studant.chat.broadcast', ['message' => $chat]);
     }
-    public function receive(Request $request)
+    public function receive(Request $request,$subject)
     {
         $user = Auth::user()->name;
-
-        return view('studant.chat.receive',['message'=> $request->get( 'message'),'username'=> $user]);
+        return view('studant.chat.receive',['message' => $request['message'],'user'=>$request['user']]);
     }
 
     // public function store(Request $request)

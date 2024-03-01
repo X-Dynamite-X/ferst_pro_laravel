@@ -1,37 +1,4 @@
 <div class="pt-5 ">
-
-    {{--
-    <div class="grid gap-0 row row-gap-3">
-        <div class="pt-5 p-lg-5 col-8">
-            <p>test</p>
-        </div>
-    </div> --}}
-
-    {{-- <div class="grid gap-0 row row-gap-3">
-        <div class="p-5 col-6">
-            <div class="card card-group">
-                <div class="card-title">
-                    <h5 class="p-2">subject</h5>
-                </div>
-                <img src="/img/4.jpg" class="card-img-top">
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                </div>
-            </div>
-        </div>
-        <div class="p-5 col-6">
-            <div class="card card-group">
-                <img src="/img/4.jpg" class="card-img-top">
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    --}}
-
     <div class="p-5">
         <div class="grid gap-0 row row-gap-3  ">
             <div class="text-center col-8 position-relative top-0 start-50 translate-middle-x ">
@@ -60,6 +27,7 @@
                         <th>Minimum Mark for saccess</th>
                         <th>Full markers</th>
                         <th>markers</th>
+                        <th>Messages</th>
                     </tr>
                     @foreach ($subjects_users as $subjects)
                         <tr>
@@ -67,6 +35,13 @@
                             <td>{{ $subjects->subject->mini_mark }}</td>
                             <td>{{ $subjects->subject->full_mark }}</td>
                             <td>{{ $subjects->user_mark }}</td>
+                            <td>
+                                 <button class="btn btn-primary">
+                                    <a href="{{ route('chat', ['subject'=>$subjects->id]) }}" class="link-light message_link">
+                                message</a>
+                            </button>
+                            </td>
+
                         </tr>
                     @endforeach
                 </table>
