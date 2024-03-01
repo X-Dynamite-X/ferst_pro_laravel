@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->boolean("is_actev");
             $table->boolean("is_admin");
-
+            $table->string('image')->default('/public/img/-6005812487401881111_121.jpg');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

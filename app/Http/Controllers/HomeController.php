@@ -64,7 +64,6 @@ class HomeController extends Controller
     }
 
 
-
     public function editUser(Request  $request, $id)
     {
         $user = User::find($id);

@@ -18,7 +18,6 @@
                     <td scope='col'>Add Student</td>
                     <td scope="col">Show Student</td>
                     <td scope="col">message</td>
-
                     <td scope="col">Edit</td>
                     <td scope="col">Delete</td>
 
@@ -43,7 +42,7 @@
                         </td>
                         <td scope="row">
                             <button class="btn btn-primary">
-                               <a href="{{ route('chat', ['subject'=>$subject->id]) }}" class="link-light message_link">
+                               <a href="{{ route('chat', ['subject_id'=>$subject->id]) }}" class="link-light message_link">
                            message</a>
                        </button>
                        </td>

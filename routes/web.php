@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Subject_Controller;
 use App\Http\Controllers\SubjectUser_Controller;
+
 use App\Http\Middleware\CheckIsAdmin;
 
 use App\Http\Controllers\ChatController;
@@ -18,6 +20,7 @@ use App\Http\Controllers\ChatController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::prefix('admin')->middleware([CheckIsAdmin::class])->group(function () {
     // user Route
     Route::get('/user', [HomeController::class, 'showUser'])->name('user_home');
@@ -35,15 +38,16 @@ Route::prefix('admin')->middleware([CheckIsAdmin::class])->group(function () {
     Route::delete('/user_subject/{subject_id}/{user_id}/delete_user_mark', [SubjectUser_Controller::class, 'destroy'])->name('delete_user_mark');
 });
 Auth::routes(['verify' => true]);
-    // Login and Register  Route
+// Login and Register  Route
 Route::middleware('auth')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/chat/{subject}', [ChatController::class, 'index'])->name('chat');
+    Route::get('/chat/{subject_id}', [ChatController::class, 'index'])->name('chat');
     Route::post('/broadcast', [ChatController::class, 'broadcast'])->name('broadcast');
-    Route::post('/receive/{subject}', [ChatController::class, 'receive'])->name('receive');
-
-
-
+    Route::post('/receive/{subject_id}', [ChatController::class, 'receive'])->name('receive');
 });
-Route::get('/waiting', function () {return view('studant.waiting');})->name('waiting');
 
+Route::middleware('guest')->group(function () {
+    Route::get('/register/admin', [AdminController::class, 'regist_admin_page'])->name('regist_admin_page');
+    Route::post('/register/admin/create', [AdminController::class, 'regist_admin'])->name('regist_admin');
+    Route::get('/waiting', function () {return view('studant.waiting');})->name('waiting');
+});

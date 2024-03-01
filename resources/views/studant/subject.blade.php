@@ -37,8 +37,8 @@
                             <td>{{ $subjects->user_mark }}</td>
                             <td>
                                  <button class="btn btn-primary">
-                                    <a href="{{ route('chat', ['subject'=>$subjects->id]) }}" class="link-light message_link">
-                                message</a>
+                                    <a href="{{ route('chat', ['subject_id'=>$subjects->subject->id]) }}" class="link-light message_link">
+                                message {{$subjects->subject->id}}</a>
                             </button>
                             </td>
 

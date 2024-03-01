@@ -73,6 +73,7 @@ class RegisterController extends Controller
             'is_actev' => false,
             'is_admin' => false,
         ]);
+        
 
         // إلغاء تسجيل الدخول تلقائيًا بعد إنشاء المستخدم
         Auth::logout();

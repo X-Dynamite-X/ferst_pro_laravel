@@ -6,11 +6,14 @@ const pusher = new Pusher("0881139f278cbc02059c", {
 const encodedSubjectId = encodeURIComponent(subjectId);
 const channel = pusher.subscribe(`chat${encodedSubjectId}`);
 channel.bind("chat", function (data) {
-    if (username != data.user) {
+    console.log(data);
+    // console.log(image_user);
+    if (username != data.user_id) {
+        console.log(data.user_id);
         $.post("/receive/${encodedSubjectId}", {
             _token: csrf_token,
             message: data.message,
-            user: data.user,
+            user: data.user_id,
         }).done(function (res) {
             $(".messages > .message").last().after(res);
             $(document).scrollTop($(document).height());

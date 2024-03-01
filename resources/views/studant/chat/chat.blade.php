@@ -4,20 +4,14 @@
     <link rel="stylesheet" href="{{ asset('css/chat/chat.css') }}">
     <link rel="stylesheet" href="{{ asset('css/chat/mycode.css') }}">
 
-    <style>
-        .bg_green {
-            background-color: darkgreen;
-
-        }
-    </style>
+   
 @endsection('scc')
 
 @section('content')
     <div class="chat">
         <div class="top">
-            <img src="{{ asset('img/-5818810161089854386_120.jpg') }}">
             <div class="">
-                <small>Online</small>
+                <p>{{ $subject->subject }}</p>
             </div>
         </div>
         <div class="messages">
@@ -27,7 +21,7 @@
                         <p>{{ $message->user->name }}</p>
                     </div>
                     <div class="left message">
-                        <img src="{{ asset('img/-5818810161089854385_120.jpg') }}" alt="" srcset="">
+                        <img src='{{ $message->user->image }}' alt="" srcset="">
                         <p>{{ $message->message }}</p>
                     </div>
                 @else
@@ -38,7 +32,8 @@
                     </div>
                     <div class="right message">
                         <p>{{ $message->message }}</p>
-                        <img src="{{ asset('img/-5818810161089854387_120.jpg') }}" alt="" srcset="">
+                        <img src="{{ $message->user->image }}" alt="" srcset="">
+
                     </div>
                 @endif
             @endforeach
@@ -46,7 +41,9 @@
         <div class="bottom">
             <form id="chatForm" action="{{ route('broadcast') }}" method="POST">
                 @csrf
-                <input type="hidden" name="subject_id" value="{{ $subject }}">
+                <input type="hidden" name="subject_id" value="{{ $subject_id }}">
+                <input type="hidden" name="image_user" value="{{ $message->user->image }}">
+
                 <input type="text" name="message" id="message" placeholder="Enter  your message...">
                 <button class="send_msg " type="button"></button>
             </form>
@@ -58,10 +55,9 @@
 @section('js')
     <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
     <script>
-            var subjectId ="{{ $subject }}";
-            var username ="{{ $user->name }}";
-
-</script>
-<script src="{{ asset('/js/chat/chat.js') }}"></script>
-
+        var subjectId = "{{ $subject_id }}";
+        var username = "{{ $user->id }}";
+        // var image_user ="{{ $message->user->image }}";
+    </script>
+    <script src="{{ asset('/js/chat/chat.js') }}"></script>
 @endsection("js")

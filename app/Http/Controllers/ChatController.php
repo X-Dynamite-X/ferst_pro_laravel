@@ -7,22 +7,29 @@ use App\Events\Chat;
 use Illuminate\Broadcasting\Broadcasters\PusherBroadcaster;
 use Pusher\Pusher;
 use App\Models\Message;
+use App\Models\Subject;
+use App\Models\User;
+
+
 use Illuminate\Support\Facades\Auth;
+
 class ChatController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index($subject)
+    public function index($subject_id)
     {
         // $messages = Message::all();
         $user = Auth::user();
+        $subject = Subject::find($subject_id);
 
         // return view('studant.chat.chat',compact('messages','user'));
-        $chats = Message::where('subject_id', $subject)->get();
+        $chats = Message::where('subject_id', $subject_id)->get();
 
         return view('studant.chat.chat', [
-            'user'=>$user,
+            'user' => $user,
+            'subject_id' => $subject_id,
             'subject' => $subject,
             'chats' => $chats,
         ]);
@@ -42,18 +49,21 @@ class ChatController extends Controller
             'subject_id' => $validatedData['subject_id'],
             'message' => $validatedData['message'],
         ]);
-        $user = Auth::user()->name;
-
-        broadcast(new Chat($chat->subject_id,$user , $chat->message))->toOthers();
+        // $user = Auth::user()->id;
+        broadcast(new Chat($chat->subject_id, $chat->user_id, $chat->message))->toOthers();
 
         // broadcast (new Chat ($user,'public3' ,$message))->toOthers();
+        $user = USer::find($chat->user_id);
 
-        return view('studant.chat.broadcast', ['message' => $chat]);
+        return view('studant.chat.broadcast', ['message' => $chat, "user" => $user]);
     }
-    public function receive(Request $request,$subject)
+    public function receive(Request $request, $subject_id)
     {
-        $user = Auth::user()->name;
-        return view('studant.chat.receive',['message' => $request['message'],'user'=>$request['user']]);
+        // $user = Auth::user();
+        $user = USer::find($request['user']);
+
+
+        return view('studant.chat.receive', ['message' => $request['message'], 'user' => $user]);
     }
 
     // public function store(Request $request)
