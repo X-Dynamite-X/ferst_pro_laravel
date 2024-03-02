@@ -109,10 +109,13 @@
     list-style: none;
     margin-bottom: 0 !important;
     padding: 1rem !important;
+    /* max-width: 70%; */
+
 }
 
 .chat .messages .left {
     text-align: left;
+
 }
 
 .chat .messages .right {
@@ -138,6 +141,8 @@
     color: #6c757d !important;
     background-color: rgba(var(--bs-light-rgb), 1) !important;
     border-radius: var(--bs-border-radius) !important;
+    max-width: 70%;
+
 }
 
 
@@ -178,7 +183,7 @@
 .bottom_input{
     width: 90%;
     margin: 0 5% ;
-    
+
 }
 
 .chat .bottom .bottom_input input {

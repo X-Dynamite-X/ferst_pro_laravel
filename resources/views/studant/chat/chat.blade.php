@@ -7,10 +7,8 @@
 
 @section('content')
     <div class="chat">
-        <div class="top">
-            <div class="">
-                <p>{{ $subject->subject }}</p>
-            </div>
+        <div class="top text-center">
+                <h1>{{ $subject->subject }}</h1>
         </div>
         <div class="messages " id="messages">
             @foreach ($chats as $message)
