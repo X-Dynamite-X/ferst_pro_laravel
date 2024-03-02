@@ -3,6 +3,9 @@ Pusher.logToConsole = true;
 const pusher = new Pusher("0881139f278cbc02059c", {
     cluster: "ap2",
 });
+// var username = document.getElementById('subject_id').value;
+var subjectId = document.getElementById('subject_id').value;
+
 const encodedSubjectId = encodeURIComponent(subjectId);
 const channel = pusher.subscribe(`chat${encodedSubjectId}`);
 channel.bind("chat", function (data) {
@@ -42,3 +45,10 @@ $(document).on("click", ".send_msg", function () {
         $(document).scrollTop($(document).height());
     });
 });
+// document.addEventListener("DOMContentLoaded", function() {
+//     // الحصول على العنصر الذي تريد التمرير إليه
+//     var lastElement = document.getElementById("messages");
+
+//     // تمرير الصفحة إلى العنصر الأخير
+//     lastElement.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+//   });

@@ -7,18 +7,21 @@ use App\Models\User;
 use App\Models\Subject;
 use App\Models\SubjectUser;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
 
 class StudantController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(){
-    $user = Auth::user();
-    $subjects_users = SubjectUser::all()->where( 'user_id', $user->id);
-    $number_of_subjects = $subjects_users->count();
+    public function index()
+    {
+        $user = Auth::user();
+        $subjects_users = SubjectUser::all()->where('user_id', $user->id);
+        $number_of_subjects = $subjects_users->count();
 
-    return  view('studant_page', compact('user', 'subjects_users',"number_of_subjects"));
+        return  view('studant_page', compact('user', 'subjects_users', "number_of_subjects"));
     }
 
     /**
@@ -42,6 +45,9 @@ class StudantController extends Controller
      */
     public function show(string $id)
     {
+
+        $user = User::find($id);
+        return view("profile.user_profile", ['user' => $user]);
         //
     }
 
@@ -50,7 +56,8 @@ class StudantController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::find($id);
+        return view("profile.edit_profile", ['user' => $user]);
     }
 
     /**
@@ -58,7 +65,30 @@ class StudantController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user = User::find($id);
+        if (!$user) {
+            return redirect()->back()->with('error', 'User not found');
+        }
+
+        // تعبئة البيانات باستخدام fill
+    
+
+        $request->validate([
+            'image'=>'image|mimes:png,jpg,jpeg,gif,svg|max:2048'
+        ]);
+        $image_name = time().'.'.$request->image->extension();
+        $request->image->move(public_path('user_profile/image'),$image_name);
+        $user->image= $image_name;
+        $user->fill([
+            'name' => $request->input('e_name'),
+            'email' => $request->input('e_email'),
+            // 'image' => $image_name,
+        ]);
+
+        $user->save();
+            return redirect()->route("show_profile", [$id])->with('success', 'Profile updated successfully');
+        
+        // return redirect()->route("show_profile", [$id]);
     }
 
     /**

@@ -4,25 +4,6 @@
             <div class="text-center col-8 position-relative top-0 start-50 translate-middle-x ">
                 <table class="table table-striped table-hover">
                     <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Number of subjects</th>
-                    </tr>
-                    <tr>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $number_of_subjects }}</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-
-    </div>
-    <div class="p-5">
-        <div class="grid gap-0 row row-gap-3  ">
-            <div class="text-center col-8 position-relative top-0 start-50 translate-middle-x ">
-                <table class="table table-striped table-hover">
-                    <tr>
                         <th>Subjects</th>
                         <th>Minimum Mark for saccess</th>
                         <th>Full markers</th>
@@ -38,7 +19,7 @@
                             <td>
                                  <button class="btn btn-primary">
                                     <a href="{{ route('chat', ['subject_id'=>$subjects->subject->id]) }}" class="link-light message_link">
-                                message {{$subjects->subject->id}}</a>
+                                message</a>
                             </button>
                             </td>
 

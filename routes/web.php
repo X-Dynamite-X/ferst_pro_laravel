@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Subject_Controller;
 use App\Http\Controllers\SubjectUser_Controller;
+use App\Http\Controllers\StudantController;
+
 
 use App\Http\Middleware\CheckIsAdmin;
 
@@ -44,10 +46,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/chat/{subject_id}', [ChatController::class, 'index'])->name('chat');
     Route::post('/broadcast', [ChatController::class, 'broadcast'])->name('broadcast');
     Route::post('/receive/{subject_id}', [ChatController::class, 'receive'])->name('receive');
+    Route::get('/profile/{id}',[StudantController::class,'show'])->name("show_profile");
+    Route::get('/profile/{id}/edit',[StudantController::class,'edit'])->name('edit_profile');
+
+    Route::post('/profile/{id}/update',[StudantController::class,'update'])->name('update_profile');
+
 });
 
 Route::middleware('guest')->group(function () {
     Route::get('/register/admin', [AdminController::class, 'regist_admin_page'])->name('regist_admin_page');
     Route::post('/register/admin/create', [AdminController::class, 'regist_admin'])->name('regist_admin');
+
     Route::get('/waiting', function () {return view('studant.waiting');})->name('waiting');
 });

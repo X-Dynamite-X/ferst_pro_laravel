@@ -22,7 +22,7 @@
             </thead>
             <tbody id="row_user">
                 @foreach ($users as $user)
-                @if($user->id !== $user_auth->id)
+                @if($user->is_admin !== 1)
                     <tr id="tr{{ $user->id }}">
                         <td scope="row">{{ $user->id }}</td>
                         <td scope="row" id="name{{ $user->id }}">{{ $user->name }}</td>

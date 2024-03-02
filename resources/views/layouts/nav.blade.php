@@ -1,18 +1,26 @@
 <nav class="navbar bg-body-tertiary fixed-top ">
     @auth
         <div class="container-fluid">
-        {{ Auth::user()->name }}
-        <div>
-    @endauth
-            @guest
-            <div class="position-relative start-50">
-                @if (Route::has('login'))
-                <a class="navbar-brand" href="{{ route('login') }}">{{ __('Login') }}</a>
-            @endif
-            @if (Route::has('register'))
-                <a class="navbar-brand" href="{{ route('register') }}">{{ __('Register') }}</a>
-            @endif
+
+            <div class="image">
+                <a class="nav-link d-inline" href="/profile/{{ Auth::user()->id }}">
+                    {{ Auth::user()->name }}
+                </a>
+                <img src="{{ asset('user_profile/image/' . Auth::user()->image) }}" class="d-inline" alt="">
+
             </div>
+
+            <div>
+            @endauth
+            @guest
+                <div class="position-relative start-50">
+                    @if (Route::has('login'))
+                        <a class="navbar-brand" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    @endif
+                    @if (Route::has('register'))
+                        <a class="navbar-brand" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    @endif
+                </div>
 
             @endguest
         </div>
@@ -30,10 +38,10 @@
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel">
             @auth
-                 <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">{{ Auth::user()->name }}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">{{ Auth::user()->name }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
             @endauth
 
             <div class="offcanvas-body">
@@ -56,6 +64,9 @@
                                 {{ Auth::user()->name }}
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/profile/{{ Auth::user()->id }}">
+                                    {{ __('profile') }}
+                                </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
@@ -73,6 +84,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/admin/user_subject">supgect</a>
                             </li>
+
                         @else
                             <li class="nav-item">
                                 <a class="nav-link" href="/">studant</a>

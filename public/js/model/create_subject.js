@@ -58,6 +58,12 @@ $(document).ready(function () {
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModelShowsubject${data.id}" id="showSubjectUser${data.id}">Show</button>
                     </td>
                     <td scope="row">
+                            <button class="btn btn-primary">
+                               <a href="/chat/${data.id}" class="link-light message_link">
+                           message</a>
+                       </button>
+                       </td>
+                    <td scope="row">
                         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#EditModelsubject${data.id}" id="editSubjectUser${data.id}">Edit</button>
                     </td>
                     <td scope="row">
