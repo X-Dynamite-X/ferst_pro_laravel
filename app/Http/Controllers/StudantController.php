@@ -54,11 +54,7 @@ class StudantController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        $user = User::find($id);
-        return view("profile.edit_profile", ['user' => $user]);
-    }
+
 
     /**
      * Update the specified resource in storage.
@@ -66,28 +62,21 @@ class StudantController extends Controller
     public function update(Request $request, string $id)
     {
         $user = User::find($id);
-        if (!$user) {
-            return redirect()->back()->with('error', 'User not found');
-        }
-
-        // تعبئة البيانات باستخدام fill
-    
-
         $request->validate([
-            'image'=>'image|mimes:png,jpg,jpeg,gif,svg|max:2048'
+            'image' => 'image|mimes:png,jpg,jpeg,gif,svg|max:2048'
         ]);
-        $image_name = time().'.'.$request->image->extension();
-        $request->image->move(public_path('user_profile/image'),$image_name);
-        $user->image= $image_name;
+        if ($request->hasFile('image')) {
+            $image_name = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('user_profile/image'), $image_name);
+            $user->image = $image_name;
+        }
         $user->fill([
             'name' => $request->input('e_name'),
             'email' => $request->input('e_email'),
             // 'image' => $image_name,
         ]);
-
         $user->save();
-            return redirect()->route("show_profile", [$id])->with('success', 'Profile updated successfully');
-        
+        return $user;
         // return redirect()->route("show_profile", [$id]);
     }
 

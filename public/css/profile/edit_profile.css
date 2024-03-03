@@ -63,6 +63,10 @@ section {
   animation: animate 6s linear infinite;
   animation-delay: -3s;
 }
+
+.modal-content{
+    border: 0;
+}
 .content {
     width: 100%;
     justify-content: center;
@@ -70,6 +74,20 @@ section {
     flex-direction: column;
     gap: 40px;
   }
+  .close{
+    top: 0;
+    position: absolute;
+    padding: 7px ;
+    right: 0;
+    color:#fff;
+
+
+  }
+
+  /* .close:hover{
+color :#fff;
+
+  } */
 .profileimg_and_backgrundimg{
   background-size: cover;
   position: relative;

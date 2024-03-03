@@ -2,7 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/chat/chat.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/chat/mycode.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/chat/mycode.css') }}"> --}}
 @endsection('scc')
 
 @section('content')
@@ -35,10 +35,7 @@
                 @endif
             @endforeach
         </div>
-        <div>
-            <br>
-            <br>
-        </div>
+
         <div class="bottom">
             <div class="bottom_input">
 
@@ -56,7 +53,7 @@
     @section('js')
         <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
         <script>
-            var username = "{{ $user->id }}";
+            var username = "{{ Auth()->user()->id }}";
         </script>
         <script src="{{ asset('/js/chat/chat.js') }}"></script>
     @endsection("js")

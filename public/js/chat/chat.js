@@ -26,6 +26,9 @@ channel.bind("chat", function (data) {
 $(document).on("click", ".send_msg", function () {
     var form = $("#chatForm");
     var formData = form.serialize();
+    console.log(formData);
+    console.log(form);
+
     $.ajax({
         url: form.attr("action"),
         type: form.attr("method"),

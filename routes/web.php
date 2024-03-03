@@ -47,8 +47,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/broadcast', [ChatController::class, 'broadcast'])->name('broadcast');
     Route::post('/receive/{subject_id}', [ChatController::class, 'receive'])->name('receive');
     Route::get('/profile/{id}',[StudantController::class,'show'])->name("show_profile");
-    Route::get('/profile/{id}/edit',[StudantController::class,'edit'])->name('edit_profile');
-
     Route::post('/profile/{id}/update',[StudantController::class,'update'])->name('update_profile');
 
 });

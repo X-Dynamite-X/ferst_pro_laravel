@@ -17,10 +17,11 @@
                             <td>{{ $subjects->subject->full_mark }}</td>
                             <td>{{ $subjects->user_mark }}</td>
                             <td>
-                                 <button class="btn btn-primary">
-                                    <a href="{{ route('chat', ['subject_id'=>$subjects->subject->id]) }}" class="link-light message_link">
-                                message</a>
-                            </button>
+                                <button class="btn btn-success">
+                                    <a href="{{ route('chat', ['subject_id' => $subjects->subject->id]) }}"
+                                        class="link-light message_link">
+                                        message</a>
+                                </button>
                             </td>
 
                         </tr>
