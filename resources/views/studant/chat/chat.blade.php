@@ -6,7 +6,7 @@
 @endsection('scc')
 
 @section('content')
-    <div class="chat">
+    <div class="chat" data-bs-theme="dark">
         <div class="top text-center">
                 <h1>{{ $subject->subject }}</h1>
         </div>

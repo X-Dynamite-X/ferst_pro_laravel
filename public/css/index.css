@@ -54,6 +54,7 @@ body[data-bs-theme="light"] {
     background-color: #dededede;
     color: #000000;
 }
+
 .image img {
     display: inline-flex;
     margin: 0.25rem;
