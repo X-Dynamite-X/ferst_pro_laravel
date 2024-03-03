@@ -39,11 +39,11 @@
         <div class="bottom">
             <div class="bottom_input">
 
-                <form id="chatForm" action="{{ route('broadcast') }}" method="POST">
+                <form id="chatForm" onsubmit="return false;" action="{{ route('broadcast') }}" method="POST">
                     @csrf
                     <input type="hidden" id='subject_id' name="subject_id" value="{{ $subject_id }}">
-                    <input type="text" name="message" id="message" placeholder="Enter your message...">
-                    <button class="send_msg" type="button"></button>
+                    <input type="text" name="message" id="message" placeholder="Enter your message..." onkeyup="handleKeyPress(event)">
+                    <button class="send_msg" type="button" onclick="sendMessage()"></button>
                 </form>
             </div>
         </div>
@@ -54,6 +54,10 @@
         <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
         <script>
             var username = "{{ Auth()->user()->id }}";
+
+
+
+
         </script>
         <script src="{{ asset('/js/chat/chat.js') }}"></script>
     @endsection("js")
