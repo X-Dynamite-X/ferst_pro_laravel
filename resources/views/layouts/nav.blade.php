@@ -33,7 +33,7 @@
                 </button>
             </div>
         </div>
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+        <div class="offcanvas offcanvas-start w-2" tabindex="-1" id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel">
             @auth
                 <div class="offcanvas-header">

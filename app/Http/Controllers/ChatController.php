@@ -9,6 +9,7 @@ use Pusher\Pusher;
 use App\Models\Message;
 use App\Models\Subject;
 use App\Models\User;
+use App\Models\SubjectUser;
 
 
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,10 @@ class ChatController extends Controller
     {
         // $messages = Message::all();
         $user = Auth::user();
+        $users = User::all();
+
         $subject = Subject::find($subject_id);
+        $subject_users = $subject->users;
 
         // return view('studant.chat.chat',compact('messages','user'));
         $chats = Message::where('subject_id', $subject_id)->get();
@@ -32,6 +36,8 @@ class ChatController extends Controller
             'subject_id' => $subject_id,
             'subject' => $subject,
             'chats' => $chats,
+            'subject_users'=>$subject_users,
+            'users'=>$users,
         ]);
     }
 

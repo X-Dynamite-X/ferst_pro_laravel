@@ -15,7 +15,8 @@
     display: flex;
     flex-direction: column;
     min-width: 0;
-    margin: 0 10%;
+    width: 80%;
+    margin: 0 0 0 18%;
 
     height: var(--bs-card-height);
     word-wrap: break-word;
@@ -27,7 +28,7 @@
     border-radius: 6px !important;
 }
 .chat[data-bs-theme="dark"] {
-    background-color: #6c757d;
+    background-color: #111;
     color: #ffffff;
 }
 .chat[data-bs-theme="light"] {
@@ -41,7 +42,7 @@
     text-align: var(--bs-body-text-align);
     font-family: "Nunito", sans-serif;
     font-size: 1rem;
-    color: #161c2d;
+    /* color: #161c2d; */
     word-wrap: break-word;
     box-sizing: border-box;
     border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
@@ -178,18 +179,32 @@
     text-align: var(--bs-body-text-align);
     font-family: "Nunito", sans-serif;
     font-size: 1rem;
-    color: #161c2d;
+    /* color: #161c2d; */
     word-wrap: break-word;
+    background-color: #343a40;
+
+    position: fixed;
+    bottom: 0;
     box-sizing: border-box;
-    width: 90%;
-    margin:0 5% ;
+    width: 80%;
+    /* margin:0 5% ; */
     padding: 1rem 0 !important;
     border-top: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+}
 
+
+.chat[data-bs-theme="dark"] .bottom {
+    background-color: #343a40;
+    color: #ffffff;
+}
+.chat[data-bs-theme="light"] .bottom {
+    background-color: #dededede;
+    color: #000000;
 }
 .bottom_input{
     width: 90%;
     margin: 0 5% ;
+
 
 }
 

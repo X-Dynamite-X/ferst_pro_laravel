@@ -24,8 +24,8 @@
 <body class="" data-bs-theme="dark">
     @include('layouts.nav')
     @yield('userInfo')
-
     <main class=" pt-5 mt-5">
+        @yield("side")
         @yield('content')
     </main>
     <div id="model">
