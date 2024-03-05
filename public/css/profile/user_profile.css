@@ -1,307 +1,431 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  max-width: 100%;
-  font-family: "Quicksand", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    max-width: 100%;
+    font-family: "Quicksand", sans-serif;
 }
+
 body {
-  /* display: flex; */
-  justify-content: center;
-  align-items: center;
-  background: #000;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
 }
+
 section {
-  position: absolute;
-  width: 100vw;
-  height: 80vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2px;
-  flex-wrap: wrap;
-  overflow: hidden;
+    position: absolute;
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    flex-wrap: wrap;
+    overflow: hidden;
 }
 
 
 
 .user_profile {
-  height: 80vh;
-  background: #1c1c1c;
-  overflow: hidden;
-  position: absolute;
-  width: 90%;
-  background: #222;
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px;
-  border-radius: 4px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 9);
+    height: 80vh;
+    /* background: #1c1c1c; */
+    overflow: hidden;
+    position: absolute;
+    width: 90%;
+    /* background: #222; */
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    border-radius: 4px;
 }
+
+
+.user_profile[data-bs-theme="dark"] {
+    background: #222;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 9);
+
+
+}
+
+.user_profile[data-bs-theme="light"] {
+    background: #ddd;
+    box-shadow: 0 15px 35px rgba(9, 9, 9, 1);
+
+
+}
+
 .user_profile::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 90%;
-  height: 80vh;
-  background: linear-gradient(0deg, transparent, #fff, #fff);
-  transform-origin: bottom right;
-  animation: animate 6s linear infinite;
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 100%;
+    height: 80vh;
+    /* background: linear-gradient(0deg, transparent, #fff, #fff); */
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
 }
+
 .user_profile::after {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 90%;
-  height: 80vh;
-  background: linear-gradient(0deg, transparent, #fff, #fff);
-  transform-origin: bottom right;
-  animation: animate 6s linear infinite;
-  animation-delay: -3s;
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 100%;
+    height: 80vh;
+    /* background: linear-gradient(0deg, transparent, #fff, #fff); */
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    animation-delay: -3s;
 }
+
+.user_profile[data-bs-theme="light"]::before {
+
+    background: linear-gradient(0deg, transparent, #222, #222);
+
+}
+
+.user_profile[data-bs-theme="light"]::after {
+
+    background: linear-gradient(0deg, transparent, #222, #222);
+
+}
+
+.user_profile[data-bs-theme="dark"]::before {
+
+    background: linear-gradient(0deg, transparent, #ddd, #ddd);
+
+}
+
+.user_profile[data-bs-theme="dark"]::after {
+
+    background: linear-gradient(0deg, transparent, #ddd, #ddd);
+
+}
+
 .content {
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 40px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
 
 }
+
 @keyframes animate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
+
 .user_full_name {
-  position: absolute;
-  inset: 2px;
-  border-radius: 8px;
-  background-color: #28292d;
-  z-index: 1;
-  /* overflow: scroll; */
-  padding: 50px 40px;
-  display: flex;
-  flex-wrap: wrap;
+    position: absolute;
+    inset: 2px;
+    border-radius: 8px;
+    z-index: 1;
+    /* overflow: scroll; */
+    padding: 50px 40px;
+    /* background-color: #28292d; */
+
+    display: flex;
+    flex-wrap: wrap;
 }
-.img_user_name{
-  height: 35vh;
-  width: 100%;
+
+.user_profile[data-bs-theme="dark"] .user_full_name {
+    background-color: #28292d;
+
+}
+
+.user_profile[data-bs-theme="light"] .user_full_name {
+    background-color: #ddd;
+
+}
+
+.img_user_name {
+    height: 35vh;
+    width: 100%;
 
 
 }
+
 .background_img_user {
-  background-size: cover;
-  position: relative;
-  width: 255px;
-  border-radius: 50%;
-  height: 255px;
-  margin: 10px 1.5%  0 0;
-  float: left;
-  background-repeat: no-repeat;
-  z-index: 0;
+    background-size: cover;
+    position: relative;
+    width: 255px;
+    border-radius: 50%;
+    height: 255px;
+    margin: 10px 1.5% 0 0;
+    float: left;
+    background-repeat: no-repeat;
+    z-index: 0;
 }
-.background_img{
-width: 255px;
-position: absolute;
-height: 255px;
-border-radius: 50%;
-z-index: 1;
-top: 0;
-left: 0
+
+.background_img {
+    width: 255px;
+    position: absolute;
+    height: 255px;
+    border-radius: 50%;
+    z-index: 1;
+    top: 0;
+    left: 0
 }
+
 .imag_user {
-  margin: 10px 0 0 2px;
-  z-index: 2;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100px;
-  height: 100px;
+    margin: 10px 0 0 2px;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
 }
+
 .img_fluid {
-  position: absolute;
-  width: 85px;
-  height: 85px;
-  /* float: left; */
-  z-index: 3;
-  border-radius: 50%;
+    position: absolute;
+    width: 85px;
+    height: 85px;
+    /* float: left; */
+    z-index: 3;
+    border-radius: 50%;
 }
 
 
 .user_inf_name {
-  color: #fff;
-  float: left;
-  width: 100%;
-  position: absolute;
-  margin: 1% 0 0 310px;
+    float: left;
+    width: 100%;
+    position: absolute;
+    margin: 1% 0 0 310px;
 }
 
+.user_profile[data-bs-theme="dark"] .user_inf_name {
+    color: #fff;
+
+}
+
+.user_profile[data-bs-theme="light"] .user_inf_name {
+    color: #000;
+
+}
 
 .user_name,
-.first_name_user ,
-.list_name_user ,
+.first_name_user,
+.list_name_user,
 .phone_user,
-.email_user
-{
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+.email_user {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
 }
+
 .user_name label,
 .first_name_user label,
 .list_name_user label,
 .phone_user label,
-.email_user label
-{
-  float: left;
-  margin: 3% 1.5% 0 0;
+.email_user label {
+    float: left;
+    margin: 3% 1.5% 0 0;
 }
+
 .user_name h2,
 .first_name_user h2,
 .list_name_user h2,
 .phone_user h2,
-.email_user h2
-{
-  margin: 2% 0.5% 0 0;
-  float: left;
-  color: #fff;
-  font-weight: 500;
-  align-items: center;
-  letter-spacing: 0.01em;
+.email_user h2 {
+    margin: 2% 0.5% 0 0;
+    float: left;
+    color: #fff;
+    font-weight: 500;
+    align-items: center;
+    letter-spacing: 0.01em;
+}
+
+.user_profile[data-bs-theme="dark"] .user_name h2,
+.user_profile[data-bs-theme="dark"] .first_name_user h2,
+.user_profile[data-bs-theme="dark"] .list_name_user h2,
+.user_profile[data-bs-theme="dark"] .phone_user h2,
+.user_profile[data-bs-theme="dark"] .email_user h2 {
+    color: #fff;
+
+}
+
+.user_profile[data-bs-theme="light"] .user_name h2,
+.user_profile[data-bs-theme="light"] .first_name_user h2,
+.user_profile[data-bs-theme="light"] .list_name_user h2,
+.user_profile[data-bs-theme="light"] .phone_user h2,
+.user_profile[data-bs-theme="light"] .email_user h2 {
+    color: #000;
+
 }
 
 .inputBox {
-  position: relative;
-  width: 300px;
-  margin-top: 35px;
+    position: relative;
+    width: 300px;
+    margin-top: 35px;
 }
+
 .inputBox input {
-  position: relative;
-  width: 100%;
-  padding: 20px 10px 10px;
-  background: transparent;
-  border: none;
-  outline: none;
-  color: #23242a;
-  font-size: 1em;
-  letter-spacing: 0.05em;
-  z-index: 10;
-  color: #181818;
+    position: relative;
+    width: 100%;
+    padding: 20px 10px 10px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #23242a;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    z-index: 10;
+    color: #181818;
 }
+
+.user_profile[data-bs-theme="dark"] .inputBox input {
+    color: #181818;
+
+}
+
+.user_profile[data-bs-theme="light"] .inputBox input {
+    color: #e8e8e8;
+
+}
+
 input[type="button"] {
-  border: 1px solid #fff;
-  outline: none;
-  background: transparent;
-  color: #fff;
-  padding: 11px 25px;
-  width: 200px;
-  border-radius: 4px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
+    border: 1px solid #fff;
+    outline: none;
+    background: transparent;
+    color: #fff;
+    padding: 11px 25px;
+    width: 200px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
-button[type="button"]:hover {
-  background: #fff;
-  color: #fff;
+
+.user_profile[data-bs-theme="dark"] input[type="button"] {
+    color: #fff;
+    border: 1px solid #fff;
+
+
 }
+
+.user_profile[data-bs-theme="light"] input[type="button"] {
+    color: #000;
+    border: 1px solid #000;
+}
+
+.user_profile[data-bs-theme="dark"] input[type="button"]:hover {
+    background: #fff;
+    color: #000;
+}
+
+.user_profile[data-bs-theme="light"] input[type="button"]:hover {
+    background: #000;
+    color: #fff;
+}
+
+
+
 button[type="button"]:active {
-  opacity: 0.8;
+    opacity: 0.8;
 }
 
 
 @media (max-width: 900px) {
-  section .span {
-    width: calc(10vw - 2px);
-    height: calc(10vw - 2px);
-  }
+    section .span {
+        width: calc(10vw - 2px);
+        height: calc(10vw - 2px);
+    }
 }
 
 
 @media (max-width: 750px) {
-  .user_profile{
-    width: 100%;
-    height: 100%;
-  }
+    .user_profile {
+        width: 100%;
+        height: 100%;
+    }
+
     .img_user_name {
-    height: 35vh;
-    width: 100%;
-    float: left;
-}
-  .background_img_user {
-    background-size: cover;
-    width: 225px;
-    border-radius: 50%;
-    height: 225px;
-    margin: 10px 1.5%;
-    float: left;
-    background-repeat: no-repeat;
+        height: 35vh;
+        width: 100%;
+        float: left;
+    }
+
+    .background_img_user {
+        background-size: cover;
+        width: 225px;
+        border-radius: 50%;
+        height: 225px;
+        margin: 10px 1.5%;
+        float: left;
+        background-repeat: no-repeat;
+    }
+
+    .imag_user {
+        float: left;
+        margin: 10px 0 0 2px;
+    }
+
+    .img_fluid {
+        width: 85px;
+        height: 85px;
+        border-radius: 50%;
+    }
+
+    .user_inf_name {
+        text-align: center;
+        /* color: #fff; */
+        float: left;
+        width: 100%;
+        position: relative;
+        margin: 20px 0 0 0;
+    }
+
+    .user_name,
+    .first_name_user,
+    .list_name_user,
+    .phone_user,
+    .email_user,
+    .inputBox {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .user_name label,
+    .first_name_user label,
+    .list_name_user label,
+    .phone_user label,
+    .email_user label {
+        float: left;
+        margin: 3% 1.5% 0 0;
+    }
+
+    .user_name h2,
+    .first_name_user h2,
+    .list_name_user h2,
+    .phone_user h2,
+    .user_name h2,
+    .email_user h2 {
+        margin: 2% 0.5% 0 0;
+        float: left;
+        /* color: #fff; */
+        font-weight: 400;
+        align-items: center;
+        letter-spacing: 0.01em;
+    }
+
 }
 
-  .imag_user {
-    float: left;
-    margin: 10px 0 0 2px;
-}
-  .img_fluid {
-    width: 85px;
-    height: 85px;
-    border-radius: 50%;
-  }
-
-  .user_inf_name {
-    text-align: center;
-    color: #fff;
-    float: left;
-    width: 100%;
-    position: relative;
-    margin: 20px 0 0 0;
-  }
-  .user_name,
-  .first_name_user ,
-  .list_name_user ,
-  .phone_user,
-  .email_user,
-  .inputBox
-  {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .user_name label,
-  .first_name_user label,
-  .list_name_user label,
-  .phone_user label,
-  .email_user label
-  {
-    float: left;
-    margin: 3% 1.5%  0 0;
-  }
-  .user_name h2,
-  .first_name_user h2,
-  .list_name_user h2,
-  .phone_user h2,
-  .user_name h2,
-  .email_user h2
-  {
-    margin: 2% 0.5% 0 0;
-    float: left;
-    color: #fff;
-    font-weight: 400;
-    align-items: center;
-    letter-spacing: 0.01em;
-  }
-
-}
 @media (max-width: 600px) {
-  section .span {
-    width: calc(20vw - 2px);
-    height: calc(20vw - 2px);
-  }
+    section .span {
+        width: calc(20vw - 2px);
+        height: calc(20vw - 2px);
+    }
 }

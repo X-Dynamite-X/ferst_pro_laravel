@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
 
-            <div class="edit_profile">
+            <div class="edit_profile"  data-bs-theme="dark">
                 <div class="content">
                     <div class="form">
                         <p data-bs-dismiss="modal" class="close" aria-label="Close">

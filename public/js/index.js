@@ -13,26 +13,29 @@ function toggleTheme() {
     const body = document.body;
     const currentTheme = body.getAttribute('data-bs-theme');
 
-    // تبديل الثيم بين النهار والليل
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
-    // تعيين الثيم الجديد
     body.setAttribute('data-bs-theme', newTheme);
     $('.chat').attr('data-bs-theme', newTheme);
     $('.sidenav').attr('data-bs-theme', newTheme);
+    $('.user_profile').attr('data-bs-theme', newTheme);
+    $('.edit_profile').attr('data-bs-theme', newTheme);
 
-    // تخزين حالة الثيم في Local Storage
+
+
     localStorage.setItem('theme', newTheme);
 }
 
-// تحقق إذا كان هناك حالة ثيم مخزنة في Local Storage واستخدامها
 const storedTheme = localStorage.getItem('theme');
 if (storedTheme) {
     const body = document.body;
     body.setAttribute('data-bs-theme', storedTheme);
     $('.chat').attr('data-bs-theme', storedTheme);
     $('.sidenav').attr('data-bs-theme', storedTheme);
+    $('.user_profile').attr('data-bs-theme', storedTheme);
+    $('.edit_profile').attr('data-bs-theme', storedTheme);
+
+
 }
 
-// إضافة استماع لزر تبديل الثيم
 document.getElementById('toggleThemeBtn').addEventListener('click', toggleTheme);

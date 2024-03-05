@@ -6,7 +6,7 @@
 @endsection("css")
 @section('content')
 <section>
-    <div class="user_profile ">
+    <div class="user_profile " data-bs-theme="dark">
         <div class="content">
             <div class="user_full_name">
                 <div class="img_user_name">
