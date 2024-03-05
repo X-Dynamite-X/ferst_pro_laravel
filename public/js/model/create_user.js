@@ -8,6 +8,11 @@ $(document).ready(function () {
             data: formData,
             success: function (data) {
                 console.log(data);
+                $("#username").val("");
+                $("#email").val("");
+                $("#password").val("");
+                $("#password-confirm").val("");
+
                 var user_show_model = `
                             <div class="modal fade " id="ModelShow${
                                 data.id

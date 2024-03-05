@@ -41,10 +41,10 @@
                                 id="showSubjectUser{{ $subject->id }}">Show</button>
                         </td>
                         <td scope="row">
-                            <button class="btn btn-primary">
-                               <a href="{{ route('chat', ['subject_id'=>$subject->id]) }}" class="link-light message_link">
+                            {{-- <button class="btn btn-primary"> --}}
+                               <a href="{{ route('chat', ['subject_id'=>$subject->id]) }}" class="btn btn-primary  message_link">
                            message</a>
-                       </button>
+                       {{-- </button> --}}
                        </td>
                         <td scope="row">
                             <button type="button" class="btn btn-warning" data-bs-toggle="modal"

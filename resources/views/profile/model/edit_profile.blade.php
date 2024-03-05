@@ -1,7 +1,6 @@
 <div class="modal fade" id="edit_profile_model" tabindex="-1" aria-labelledby="edit_profile_modelLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-
             <div class="edit_profile"  data-bs-theme="dark">
                 <div class="content">
                     <div class="form">
@@ -25,13 +24,10 @@
                                         <img id="background_preview_image"
                                             src='{{ asset('user_profile/image/' . $user->image) }}' alt=""
                                             class="background_img">
-                                        {{-- <input type="file" id="background_input_img" name="image"> --}}
                                         <input type="file" id="background_input_img" name="image" onchange="previewImage(this)">
-
                                     </div>
                                 </label>
                             </div>
-
                             <div class="inputBox">
                                 <input type="text" name="e_name" required="required" value="{{ $user->name }}" />
                                 <span>Username</span>
@@ -42,9 +38,7 @@
                                 <span>Email</span>
                                 <i></i>
                             </div>
-
                             <div class="inputBox">
-
                                 <input type="button" class="send_edit_profile" data-id="{{Auth()->user()->id}}" value="save">
                             </div>
                         </form>

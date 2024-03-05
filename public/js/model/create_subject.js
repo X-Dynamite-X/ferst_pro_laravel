@@ -9,7 +9,7 @@ $(document).ready(function () {
             success: function (res) {
                 data = res[1];
                 var admin = res[2].id;
-
+                $("#subject_input").val("");
                 var editModel = `<div class="modal fade" data-bs-theme="dark" id="EditModelsubject${data.id}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="EditModelsubjectLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
