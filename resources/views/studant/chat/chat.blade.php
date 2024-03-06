@@ -61,7 +61,7 @@
         <div class="mb-5 pb-5"></div>
         <div class="bottom ">
             <div class="bottom_input">
-                <form id="chatForm" onsubmit="return false;" action="{{ route('broadcast') }}" method="POST">
+                <form id="chatForm" onsubmit="return false;" action="{{ route('broadcast', ['subject_id' => $subject->id]) }}" method="POST">
                     @csrf
                     <input type="hidden" id='subject_id' name="subject_id" value="{{ $subject_id }}">
                     <input type="text" name="message" id="message" placeholder="Enter your message..."

@@ -42,7 +42,7 @@ class ChatController extends Controller
     }
 
 
-    public function broadcast(Request $request)
+    public function broadcast(Request $request,$subject_id)
     {
         $validatedData = $request->validate([
 
@@ -52,7 +52,7 @@ class ChatController extends Controller
 
         $chat = Message::create([
             'user_id' => Auth::user()->id,
-            'subject_id' => $validatedData['subject_id'],
+            'subject_id' => $subject_id,
             'message' => $validatedData['message'],
         ]);
         // $user = Auth::user()->id;

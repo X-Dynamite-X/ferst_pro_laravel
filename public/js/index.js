@@ -39,3 +39,16 @@ if (storedTheme) {
 }
 
 document.getElementById('toggleThemeBtn').addEventListener('click', toggleTheme);
+
+// document.addEventListener("contextmenu", function (e) {
+//     e.preventDefault();
+// });
+// document.addEventListener("keydown", function (e) {
+//     if ((e.ctrlKey || e.metaKey) && (e.key === "I" || e.key === "i")) {
+//         e.preventDefault();
+//     }
+//     else if ((e.ctrlKey || e.metaKey) && (e.key === "C" || e.key === "c")) {
+//         e.preventDefault();
+
+//     }
+// });

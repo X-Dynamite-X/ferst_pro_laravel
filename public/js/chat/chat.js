@@ -52,19 +52,25 @@ function handleKeyPress(event) {
 $(document).on("click", ".send_msg", function () {
     sendMessage();
 });
-
-
 channel.bind("chat", function (data) {
     console.log(data);
     if (username != data.user_id) {
         console.log(data.user_id);
-        $.post("/receive/${encodedSubjectId}", {
-            _token: csrf_token,
-            message: data.message,
-            user: data.user_id,
-        }).done(function (res) {
-            $(".messages > .message").last().after(res);
-            $(document).scrollTop($(document).height());
+        $.ajax({
+            url: `/receive/${encodedSubjectId}`,
+            method: 'POST',
+            data: {
+                _token: csrf_token,
+                message: data.message,
+                user: data.user_id,
+            },
+            success: function (res) {
+                $(".messages > .message").last().after(res);
+                $(document).scrollTop($(document).height());
+            },
+            error: function (error) {
+                console.log('Error:', error);
+            }
         });
     }
 });
