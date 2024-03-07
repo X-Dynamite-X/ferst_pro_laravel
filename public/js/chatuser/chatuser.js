@@ -41,11 +41,7 @@ function sendMessage() {
             isSending = false;
         },
     })
-    // .done(function (res) {
-    //     $(".messages > .message").last().after(res);
-    //     $("#message_user").val("");
-    //     $(document).scrollTop($(document).height());
-    // });
+
 }
 
 function handleKeyPress(event) {
@@ -73,7 +69,6 @@ channel.bind("chatuser", function (data) {
                 _token: csrf_token,
                 message_body: data.message_body,
                 encodedreceiverUserId: data.encodedreceiverUserId,
-
             },
             success: function (res) {
                 $(".messages > .message").last().after(res);
