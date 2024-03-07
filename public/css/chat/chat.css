@@ -231,13 +231,21 @@
     display: inline-flex;
     text-align: center;
     cursor: pointer;
-    border: 0px solid #484848;
-    border-radius: 5px;
-    /* margin: 3px; */
-    width: 2.35rem;
-    height: 2.35rem;
-    background: url("https://assets.edlin.app/icons/font-awesome/paper-plane/paper-plane-regular.svg") center no-repeat;
+    border-radius:50%;
 
+}
+.chat[data-bs-theme="light"]  .bottom .bottom_input button {
+    background-color: #e2e2e2;
+    color: #000;
+    border: 0px solid #484848;
+
+}
+
+
+.chat[data-bs-theme="dark"]  .bottom .bottom_input button {
+    background-color: #343a40;
+    color: #fff;
+    border: 0px solid #484848;
 }
 
 /*# sourceMappingURL=style.css.map */

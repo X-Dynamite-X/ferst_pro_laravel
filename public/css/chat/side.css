@@ -56,10 +56,38 @@
     background-color: #818181;
     margin: 0 0 2px 0;
   }
-  .sidenav[data-bs-theme="dark"] .backgruond :hover{
+  .sidenav[data-bs-theme="dark"] .backgruond:hover{
     background-color: #000;
     margin: 0 0 2px 0;
   }
+
+
+  .sidenav[data-bs-theme="light"] p:hover {
+    color: #000;
+  }
+  .sidenav[data-bs-theme="light"]  .user_acaunt{
+    background-color: #d1d1d1;
+    margin: 0 0 2px 0;
+  }
+  .sidenav[data-bs-theme="light"]  .user_acaunt:hover{
+    background-color: #fff;
+    margin: 0 0 2px 0;
+  }
+
+  .sidenav[data-bs-theme="dark"] p:hover {
+    color: #fff;
+  }
+  .sidenav[data-bs-theme="dark"]  .user_acaunt{
+    background-color: #818181;
+    margin: 0 0 2px 0;
+  }
+  .sidenav[data-bs-theme="dark"]  .user_acaunt:hover{
+    background-color: #000;
+    margin: 0 0 2px 0;
+  }
+
+
+
   /* Style page content */
 
 
