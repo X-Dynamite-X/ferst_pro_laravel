@@ -39,8 +39,8 @@
         <a href="{{ route('messages.show', ['senderUserId' => Auth::user()->id, 'receiverUserId' => $subject_user->id]) }}"  class="d-block user_acaunt">
             <img src='{{ asset('user_profile/image/' . $subject_user->image) }}'class="img_avter d-inline"  alt="" srcset="">
 
-            <p class="d-inline">{{ $subject_user->name }}</p></a>        @endforeach
-</div>
+            <p class="d-inline">{{ $subject_user->name }}</p></a>    </div>    @endforeach
+
     </div>
 @endsection
 @section('content')
