@@ -45,8 +45,6 @@
     <div class="chat" data-bs-theme="dark">
 
         <div class="messages " id="messages">
-
-
         </div>
         <div class="mb-5 pb-5"></div>
         <div class="bottom ">

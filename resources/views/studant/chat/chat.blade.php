@@ -3,6 +3,9 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/chat/chat.css') }}">
     <link rel="stylesheet" href="{{ asset('css/chat/side.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/chat/chatUser.css') }}">
+
+
 
     {{-- <link rel="stylesheet" href="{{ asset('css/chat/mycode.css') }}"> --}}
 @endsection('scc')
@@ -14,8 +17,11 @@
         </h3>
         @foreach ($users as $admin)
             @if ($admin->is_admin == 1)
-                <p>{{ $admin->name }}</p>
-            @endif
+            <a href="{{ route('messages.show', ['senderUserId' => Auth::user()->id, 'receiverUserId' => $admin->id]) }}" class="d-block user_acaunt">
+                <img src='{{ asset('user_profile/image/' . $admin->image) }}' class="img_avter d-inline" alt="" srcset="">
+
+                <p class="d-inline">{{ $admin->name }}</p>
+            </a>            @endif
         @endforeach
 
         <hr>
@@ -23,8 +29,10 @@
             studant
         </h3>
         @foreach ($subject_users as $subject_user)
-            <p>{{ $subject_user->name }}</p>
-        @endforeach
+        <a href="{{ route('messages.show', ['senderUserId' => Auth::user()->id, 'receiverUserId' => $subject_user->id]) }}"  class="d-block user_acaunt">
+            <img src='{{ asset('user_profile/image/' . $subject_user->image) }}'class="img_avter d-inline"  alt="" srcset="">
+
+            <p class="d-inline">{{ $subject_user->name }}</p></a>        @endforeach
 
     </div>
 @endsection
