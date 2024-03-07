@@ -17,11 +17,15 @@
         </h3>
         @foreach ($users as $admin)
             @if ($admin->is_admin == 1)
+        <div class="backgruond">
+
             <a href="{{ route('messages.show', ['senderUserId' => Auth::user()->id, 'receiverUserId' => $admin->id]) }}" class="d-block user_acaunt">
                 <img src='{{ asset('user_profile/image/' . $admin->image) }}' class="img_avter d-inline" alt="" srcset="">
 
                 <p class="d-inline">{{ $admin->name }}</p>
-            </a>            @endif
+            </a>
+        </div>
+            @endif
         @endforeach
 
         <hr>
@@ -29,11 +33,14 @@
             studant
         </h3>
         @foreach ($subject_users as $subject_user)
+        <div class="backgruond">
+
+
         <a href="{{ route('messages.show', ['senderUserId' => Auth::user()->id, 'receiverUserId' => $subject_user->id]) }}"  class="d-block user_acaunt">
             <img src='{{ asset('user_profile/image/' . $subject_user->image) }}'class="img_avter d-inline"  alt="" srcset="">
 
             <p class="d-inline">{{ $subject_user->name }}</p></a>        @endforeach
-
+</div>
     </div>
 @endsection
 @section('content')

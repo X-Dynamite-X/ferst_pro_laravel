@@ -29,15 +29,37 @@
     /* color: #818181; */
     display: block;
   }
-
+  .sidenav[data-bs-theme="dark"] a  {
+    color: #ffffff;
+}
+.sidenav[data-bs-theme="light"] a  {
+    color: #000000;
+}
   /* When you mouse over the navigation links, change their color */
-  .sidenav[data-bs-theme="dark"] p:hover {
-    color: #f1f1f1;
-  }
+
   .sidenav[data-bs-theme="light"] p:hover {
-    color: #818181;
+    color: #000;
+  }
+  .sidenav[data-bs-theme="light"] .backgruond{
+    background-color: #d1d1d1;
+    margin: 0 0 2px 0;
+  }
+  .sidenav[data-bs-theme="light"] .backgruond :hover{
+    background-color: #fff;
+    margin: 0 0 2px 0;
   }
 
+  .sidenav[data-bs-theme="dark"] p:hover {
+    color: #fff;
+  }
+  .sidenav[data-bs-theme="dark"] .backgruond{
+    background-color: #818181;
+    margin: 0 0 2px 0;
+  }
+  .sidenav[data-bs-theme="dark"] .backgruond :hover{
+    background-color: #000;
+    margin: 0 0 2px 0;
+  }
   /* Style page content */
 
 

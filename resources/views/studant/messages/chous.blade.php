@@ -1,4 +1,3 @@
-
 @extends('include.index')
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/chat/chat.css') }}">
@@ -14,12 +13,16 @@
             Admin
         </h3>
         @foreach ($users as $admin)
-            @if ($admin->is_admin == 1  && $admin->id != Auth::user()->id )
-            <a href="{{ route('messages.show', ['senderUserId' => Auth::user()->id, 'receiverUserId' => $admin->id]) }}" class="d-block user_acaunt">
-                <img src='{{ asset('user_profile/image/' . $admin->image) }}' class="img_avter d-inline" alt="" srcset="">
+            @if ($admin->is_admin == 1 && $admin->id != Auth::user()->id)
+        <div class="backgruond">
 
-                <p class="d-inline">{{ $admin->name }}</p>
-            </a>
+                <a href="{{ route('messages.show', ['senderUserId' => Auth::user()->id, 'receiverUserId' => $admin->id]) }}"
+                    class="d-block user_acaunt">
+                    <img src='{{ asset('user_profile/image/' . $admin->image) }}' class="img_avter d-inline" alt=""
+                        srcset="">
+
+                    <p class="d-inline">{{ $admin->name }}</p>
+                </a></div>
             @endif
         @endforeach
 
@@ -28,20 +31,25 @@
             studant
         </h3>
         @foreach ($users as $user)
-            @if ($user->is_admin == 0  && $user->id != Auth::user()->id)
-            <a href="{{ route('messages.show', ['senderUserId' => Auth::user()->id, 'receiverUserId' => $user->id]) }}"  class="d-block user_acaunt">
-                <img src='{{ asset('user_profile/image/' . $user->image) }}'class="img_avter d-inline"  alt="" srcset="">
+            @if ($user->is_admin == 0 && $user->id != Auth::user()->id)
+                <div class="backgruond ">
 
-                <p class="d-inline">{{ $user->name }}</p></a>
+
+                    <a href="{{ route('messages.show', ['senderUserId' => Auth::user()->id, 'receiverUserId' => $user->id]) }}"
+                        class="d-block user_acaunt">
+                        <img src='{{ asset('user_profile/image/' . $user->image) }}'class="img_avter d-inline"
+                            alt="" srcset="">
+
+                        <p class="d-inline">{{ $user->name }}</p>
+                    </a>
+                </div>
             @endif
         @endforeach
 
     </div>
+@endsection('side')
 
-    @endsection('side')
-
-    @section('content')
-
+@section('content')
     <div class="chat" data-bs-theme="dark">
 
         <div class="messages " id="messages">
@@ -49,7 +57,7 @@
         <div class="mb-5 pb-5"></div>
         <div class="bottom ">
             <div class="bottom_input">
-                <form  method="post">
+                <form method="post">
                     @csrf
 
                     <input type="text" name="message_body" id="message" placeholder="Enter your message..."
@@ -58,7 +66,4 @@
                 </form>
             </div>
         </div>
-
-
-
     @endsection
