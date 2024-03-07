@@ -4,19 +4,19 @@ const pusher = new Pusher("0881139f278cbc02059c", {
     cluster: "ap2",
 });
 // var username = document.getElementById('subject_id').value;
-var subjectId = document.getElementById("subject_id").value;
+const encodedsenderUser = encodeURIComponent(senderUser);
 
-const encodedSubjectId = encodeURIComponent(subjectId);
-const channel = pusher.subscribe(`chat${encodedSubjectId}`);
+const encodedreceiverUserId = encodeURIComponent(receiverUserId);
+const channel = pusher.subscribe(`from`+encodedreceiverUserId+`to` +encodedsenderUser);
 
 var isSending = false;
+
 
 function sendMessage() {
     if (isSending) {
         return;
     }
-
-    var form = $("#chatForm");
+    var form = $("#chatUserForm");
     var formData = form.serialize();
     isSending = true;
     $.ajax({
@@ -26,8 +26,10 @@ function sendMessage() {
         data: formData,
         success: function (response) {
             console.log("success");
+            console.log(response);
+            console.log("send");
             $(".messages > .message").last().after(response);
-            $("#message").val("");
+            $("#message_user").val("");
             $(document).scrollTop($(document).height());
         },
         error: function (response) {
@@ -41,7 +43,7 @@ function sendMessage() {
     })
     // .done(function (res) {
     //     $(".messages > .message").last().after(res);
-    //     $("#message").val("");
+    //     $("#message_user").val("");
     //     $(document).scrollTop($(document).height());
     // });
 }
@@ -52,22 +54,26 @@ function handleKeyPress(event) {
     }
 }
 
-
-$(document).on("click", ".send_msg", function () {
+$(document).on("click", ".send_user_msg", function () {
     sendMessage();
 });
 
-channel.bind("chat", function (data) {
+console.log(senderUser == encodedreceiverUserId);
+channel.bind("chatuser", function (data) {
     console.log(data);
-    if (username != data.user_id) {
-        console.log(data.user_id);
+    console.log('res');
+
+    // if (senderUser == data.encodedreceiverUserId) {
+        console.log(data);
+        console.log('res');
         $.ajax({
-            url: `/receive/${encodedSubjectId}`,
+            url: receive,
             method: 'POST',
             data: {
                 _token: csrf_token,
-                message: data.message,
-                user: data.user_id,
+                message_body: data.message_body,
+                encodedreceiverUserId: data.encodedreceiverUserId,
+
             },
             success: function (res) {
                 $(".messages > .message").last().after(res);
@@ -77,5 +83,5 @@ channel.bind("chat", function (data) {
                 console.log('Error:', error);
             }
         });
-    }
+    // }
 });

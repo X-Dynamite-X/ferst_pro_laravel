@@ -26,6 +26,8 @@ class Kernel extends HttpKernel
         'isAdmin' => \App\Http\Middleware\CheckIsAdmin::class,
         'checkChatAccess' => \App\Http\Middleware\CheckChatAccess::class,
         'checkstudant' => \App\Http\Middleware\CheckStudant::class,
+        'checkuserchat' => \App\Http\Middleware\CheckUserChat::class,
+
 
 
     ];

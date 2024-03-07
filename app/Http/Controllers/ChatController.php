@@ -21,14 +21,10 @@ class ChatController extends Controller
      */
     public function index($subject_id)
     {
-        // $messages = Message::all();
         $user = Auth::user();
         $users = User::all();
-
         $subject = Subject::find($subject_id);
         $subject_users = $subject->users;
-
-        // return view('studant.chat.chat',compact('messages','user'));
         $chats = Message::where('subject_id', $subject_id)->get();
 
         return view('studant.chat.chat', [
@@ -45,7 +41,6 @@ class ChatController extends Controller
     public function broadcast(Request $request,$subject_id)
     {
         $validatedData = $request->validate([
-
             'subject_id' => 'required',
             'message' => 'required',
         ]);
@@ -55,37 +50,18 @@ class ChatController extends Controller
             'subject_id' => $subject_id,
             'message' => $validatedData['message'],
         ]);
-        // $user = Auth::user()->id;
         broadcast(new Chat($chat->subject_id, $chat->user_id, $chat->message))->toOthers();
-
-        // broadcast (new Chat ($user,'public3' ,$message))->toOthers();
         $user = USer::find($chat->user_id);
 
         return view('studant.chat.broadcast', ['message' => $chat, "user" => $user]);
     }
     public function receive(Request $request, $subject_id)
     {
-        // $user = Auth::user();
         $user = USer::find($request['user']);
-
-
         return view('studant.chat.receive', ['message' => $request['message'], 'user' => $user]);
     }
 
-    // public function store(Request $request)
-    // {
-    //      dd($request);
-    //     event(new Chat(
-    //         $request->input('username'),
-    //         $request->input('message'),
 
-    //     ));
-
-    //     return true;
-
-
-    //     // return view('studant.chat.chat');
-    // }
 
 
     /**

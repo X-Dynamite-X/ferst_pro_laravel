@@ -8,7 +8,7 @@ use App\Http\Controllers\Subject_Controller;
 use App\Http\Controllers\SubjectUser_Controller;
 use App\Http\Controllers\StudantController;
 
-
+use App\Http\Controllers\ChatUserController;
 use App\Http\Middleware\CheckIsAdmin;
 
 use App\Http\Controllers\ChatController;
@@ -55,6 +55,16 @@ Route::middleware('auth')->group(function () {
         Route::post('/broadcast/{subject_id}', [ChatController::class, 'broadcast'])->name('broadcast');
         Route::post('/receive/{subject_id}', [ChatController::class, 'receive'])->name('receive');
     });
+
+    Route::middleware('checkuserchat')->group(function () {
+
+        Route::get('/messages/{senderUserId}', [ChatuserController::class, 'chousMesagess'])->name('messages.chous');
+        Route::get('/messages/{senderUserId}/{receiverUserId}', [ChatuserController::class, 'showMessages'])->name('messages.show');
+        Route::post('/messages/{senderUserId}/{receiverUserId}/send', [ChatuserController::class, 'sendMessage'])->name('messages.send');
+        Route::post('/messages/{senderUserId}/{receiverUserId}/receive', [ChatuserController::class, 'receiveMessages'])->name('messages.receive');
+
+    });
+
 
 
     Route::get('/profile/{id}', [StudantController::class, 'show'])->name("show_profile");
